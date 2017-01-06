@@ -2,8 +2,89 @@
   margin:0;
   padding:0;
 }
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+h1 {
+    font-size: 2.5vw;
+    font-weight: 500;
+    margin-bottom:15px;
+}
+
+h3 {
+    margin-bottom:15px;
+    font-weight:500;
+}
+
+p {
+    text-align:justify;
+}
+
+loginbox {
+    width:350px;
+    height:305px;
+    text-align:center;
+}
+
+button {
+    margin-top: 15px;
+    padding: 14px 26px;
+    background-color: #ff0035;
+    color: whitesmoke;
+    font-size: 1.0vw;
+    font-weight: 500;
+    font-family: raleway;
+    border: none;
+    letter-spacing: 2px;
+}
+
+#loginbox {
+    margin-left: 3%;
+    float: left;
+    text-align:center;
+    width: 310px;
+    height: 305px;
+    background-color:#2c3e50;
+    padding:20px;
+}
+
+#loginbox input {
+    display:block;
+    width:85%;
+    height:14%;
+    font-size:13px;
+    font-family:Raleway;
+    margin-bottom:15px;
+    padding-left:40px;
+}
+
+#loginbox button {
+    width:100%;
+    font-size:16px;
+    margin-top:7px;
+}
+
+
+#loginbox :nth-child(2) {
+    background-image:url(../images/personlogo.jpg);
+    background-position:6px 6px;
+    background-repeat: no-repeat;
+}
+
+#loginbox :nth-child(3) {
+    background-image:url(../images/passlogo.jpg);
+    background-position:6px 7px;
+    background-repeat: no-repeat;
+}
+
 body {
   background: url(../images/bg.jpg) no-repeat center center fixed;
+    font-family:Raleway;
+    font-weight:300;
+    color:whitesmoke;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -26,6 +107,7 @@ footer {
   height:50px;
   background-color:#2c3e50;
   opacity:0.8;
+
 }
 
 #headright {
@@ -33,7 +115,34 @@ footer {
   right: 50px;
   top: 45px;
 }
-#container {
+
+#profilePic {
+    display:block;
+    float:right;
+    width:52px;
+    height:52px;
+    background: url("../images/profile.png");
+    background-repeat: no-repeat;
+}
+
+#profileName {
+    float: left;
+    padding-top: 12%;
+    margin-right: 20px;
+}
+
+footer .container :nth-child(1){
+   float:left;
+    margin: 1.5% 3%;
+}
+
+footer .container :nth-child(2){
+    float:right;
+    margin: 1.5% 3%;
+}
+
+
+.container {
   width:1110px;
   padding:0px 40px;
   margin:0 auto;
@@ -59,13 +168,13 @@ footer {
 
 
 .twothirdCol {
-  width:632px;
+  width:62%;
   padding:10px;
   float:left;
 }
 
 .thirdCol {
-  width:316px;
+  width:29%;
   padding:10px;
   float:left;
 }
@@ -117,6 +226,7 @@ footer {
 #main {
     transition: margin-left .5s;
     padding: 20px;
+    margin-top:8%;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
