@@ -81,14 +81,17 @@ button {
 }
 
 body {
-  background: url(../images/bg.jpg) no-repeat center center fixed;
     font-family:Raleway;
     font-weight:300;
     color:whitesmoke;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+}
+
+html {
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 header {
@@ -97,6 +100,7 @@ header {
   width:100%;
   top:0px;
   left:0px;
+    float:left;
 }
 
 footer {
@@ -143,7 +147,7 @@ footer .container :nth-child(2){
 
 
 .container {
-  width:1110px;
+  width:80%;
   padding:0px 40px;
   margin:0 auto;
 }
@@ -227,6 +231,7 @@ footer .container :nth-child(2){
     transition: margin-left .5s;
     padding: 20px;
     margin-top:8%;
+    float:left;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
