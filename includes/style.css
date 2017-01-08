@@ -239,3 +239,10 @@ footer .container :nth-child(2){
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+@media screen and (max-width: 768px) {
+    #profileName {display:none}
+    .twothirdCol {width:100%;}
+    .thirdCol {width:100%;}
+
+}
