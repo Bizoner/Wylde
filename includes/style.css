@@ -23,6 +23,21 @@ p {
     text-align:justify;
 }
 
+#choose section {
+    float:left;
+    width:50%;
+}
+
+
+#choose {
+    text-align:center;
+}
+
+#selection {
+    height:250px;
+    margin-top:50px;
+}
+
 loginbox {
     width:350px;
     height:305px;
@@ -178,7 +193,7 @@ footer .container :nth-child(2){
 
 
 .twothirdCol {
-    width: 60%;
+    width: 58%;
     padding: 3%;
     float: left;
 }
@@ -233,11 +248,91 @@ footer .container :nth-child(2){
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
+main {
+    width:100%;
     transition: margin-left .5s;
-    padding: 20px;
-    margin-top:8%;
+    margin-top:5%;
     float:left;
+}
+
+#main {
+    padding: 20px;
+}
+
+#analysis {
+    padding: 0;
+    text-align:center;
+}
+
+#analysis input {
+    width:28%;
+    font-size:15px;
+    padding:1%;
+    padding-left:4%;
+    background: rgba(255, 255, 255, 0.05);
+    color:#6d717c;
+    font-family:Raleway;
+    font-weight:200;
+    border:1px grey solid;
+    background-image:url(../images/search.png);
+    background-position:6px 8px;
+    background-repeat: no-repeat;
+}
+
+#build_icon {
+    display:block;
+    margin:0 auto;
+    width: 122px;
+    height: 122px;
+    background-image:url(../images/build.png);
+    background-repeat: no-repeat;
+    margin-bottom:15px;
+}
+
+#lucky_icon {
+    display:block;
+    margin:0 auto;
+    width: 122px;
+    height: 122px;
+    background-image:url(../images/lucky.png);
+    background-repeat: no-repeat;
+    margin-bottom:15px;
+}
+
+.build_text {
+    border: 1px solid #68748b;
+    border-radius: 10px;
+    padding: 7px 30px;
+    display: block;
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 20px;
+    width:55%;
+}
+
+#artists {
+    margin-top:30px;
+}
+
+.artist {
+    float: left;
+    background: rgba(255, 255, 255, 0.16);
+    width: 18%;
+    padding-top: 10px;
+    height: 30px;
+    margin-left: 2%;
+    margin-bottom: 1%;
+}
+
+.cancel {
+    position:relative;
+    left:14px;
+    top:4px;
+    float:left;
+    width:11px;
+    height:11px;
+    background-image:url(../images/cancel.png);
+    background-repeat: no-repeat;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
