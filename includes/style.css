@@ -280,6 +280,7 @@ main {
 }
 
 #build_icon {
+    transition: margin-top .5s;
     display:block;
     margin:0 auto;
     width: 122px;
@@ -289,7 +290,16 @@ main {
     margin-bottom:15px;
 }
 
+#lucky_icon:hover, #build_icon:hover {
+    margin-top:15px;
+}
+
+.build_text:hover {
+    background-color: rgba(104, 116, 139, 0.7);
+}
+
 #lucky_icon {
+    transition: margin-top .5s;
     display:block;
     margin:0 auto;
     width: 122px;
@@ -308,6 +318,7 @@ main {
     font-weight: 300;
     font-size: 20px;
     width:55%;
+    transition: background .5s;
 }
 
 #artists {
