@@ -5,6 +5,8 @@
     <script src="includes/jquery-3.1.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="includes/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
 </head>
 <body>
 <div class="container">
@@ -24,14 +26,28 @@
         <a href="#" id="logo"></a>
     </header>
 
-    <main id="main">
+    <main id="wizard">
         <article class="twothirdCol">
             <h1>Start with choosing a body...</h1>
             <h3>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                 Etiam sed dignissim odio. Fusce eleifend viverra tellus,</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed dignissim odio.Fusce eleifend viverra tellus, a suscipit arcu sodales eu. Nullam semper eget ex et egestas. Quisque arcu augue, fringilla id purus vel, pulvinar tempus urna. Sed auctor euismod placerat. Proin dictum gravida purus, at vehicula felis faucibus eget. Sed sagittis vel massa quis congue.
-                Quisque gravida congue ipsum, id sodales mauris mattis sit amet.</p>
-            <button>SIGN UP & START CREATING</button>
+            <div class="center">
+                <div>
+                    <img src="images/pickup.png">
+                </div>
+                <div><img src="images/pickup.png"></div>
+                <div><img src="images/pickup.png"></div>
+                <div><img src="images/pickup.png"></div>
+                <div><img src="images/pickup.png"></div>
+                <div><img src="images/pickup.png"></div>
+                <div><img src="images/pickup.png"></div>
+            </div>
+            <div class="desc">
+                <h2>Seymour Duncan S2995</h2>
+                <h3>Recommended For You</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed dignissim odio.Fusce eleifend viverra tellus, a suscipit arcu sodales eu. Nullam semper eget ex et egestas.</p>
+            </div>
+
         </article>
         <article class="thirdCol" id="loginbox">
             <h1>LOGIN</h1>
@@ -43,12 +59,45 @@
     </main>
 
 </div>
+
+<script src="includes/menu.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="includes/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.center').slick({
+            centerMode: true,
+            centerPadding: '30px',
+            infinite: true,
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: true,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: true,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
 </body>
 <footer>
     <div class="container">
         <span>CONTACT US</span>
         <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
-        <script src="includes/menu.js"></script>
     </div>
 </footer>
 </html>

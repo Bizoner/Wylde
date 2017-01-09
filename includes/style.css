@@ -23,6 +23,32 @@ p {
     text-align:justify;
 }
 
+.center {
+    margin:0 auto;
+    width:100%;
+}
+.slick-slide {
+    opacity: 0.5;
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+}
+
+.slick-center {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1 !important;
+    transform: scale(1);
+}
+
+.slick-slide img {
+    margin:0 auto;
+}
+
 #choose section {
     float:left;
     width:50%;
@@ -344,6 +370,40 @@ main {
     height:11px;
     background-image:url(../images/cancel.png);
     background-repeat: no-repeat;
+}
+
+
+.desc {
+    margin:0 auto;
+    width:80%;
+ text-align:center;
+}
+
+
+.slick-prev {
+    left:0px !important;
+    z-index:9999;
+    width:40px !important;
+    height:40px !important;
+}
+
+.slick-next {
+    right:0px !important;
+    z-index:9999;
+    width:40px !important;
+    height:40px !important;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size:40px !important;
+}
+
+.center {
+    margin-bottom:20px;
+}
+
+.center button {
+    margin-top:0px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
