@@ -219,7 +219,36 @@ footer .container :nth-child(2){
   height:105px;
 }
 
+#builder section {
+    height:400px;
+    background: rgba(44, 57, 73, 0.53);
+    padding:20px;
+}
 
+.item {
+    background: rgba(255, 255, 255, 0.11);
+    padding:10px;
+    height:33px;
+    margin-bottom:15px;
+}
+
+.item_thumb {
+    width:39px;
+    height:31px;
+    background-image:url("../images/thumb.jpg");
+    float:left;
+}
+
+.item_title {
+    float:left;
+    margin-top:5px;
+    margin-left:10px;
+}
+
+.item_price {
+    float:right;
+    margin-top:6px;
+}
 
 .twothirdCol {
     width: 58%;
