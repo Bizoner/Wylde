@@ -220,7 +220,8 @@ footer .container :nth-child(2){
 }
 
 #builder section {
-    height:400px;
+    position:relative;
+    height:320px;
     background: rgba(44, 57, 73, 0.53);
     padding:20px;
 }
@@ -228,8 +229,12 @@ footer .container :nth-child(2){
 .item {
     background: rgba(255, 255, 255, 0.11);
     padding:10px;
-    height:33px;
-    margin-bottom:15px;
+    height:30px;
+    margin-bottom:10px;
+}
+
+#sectitle {
+    color:#f4364c;
 }
 
 .item_thumb {
@@ -243,6 +248,7 @@ footer .container :nth-child(2){
     float:left;
     margin-top:5px;
     margin-left:10px;
+    font-size:0.9em;
 }
 
 .item_price {
@@ -250,16 +256,40 @@ footer .container :nth-child(2){
     margin-top:6px;
 }
 
+.item_total {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
 .twothirdCol {
-    width: 58%;
+    width: 56%;
     padding: 3%;
     float: left;
 }
 
 .thirdCol {
-  width:29%;
+  width:34%;
   padding:10px;
   float:left;
+}
+
+#wizard section {
+    display:block;
+    margin-top:20px;
+}
+
+#guitar_pic {
+    width: 80%;
+    height: 180px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px white solid;
+    background: url(../images/guitar.png);
+    background-color: rgba(255, 255, 255, 0.1);
+    background-size: 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }
 
 #Half {
