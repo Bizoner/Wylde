@@ -233,8 +233,16 @@ footer .container :nth-child(2){
     margin-bottom:10px;
 }
 
+.item:active {
+    background: rgba(255, 255, 255, 0.41);
+}
+
 #sectitle {
     color:#f4364c;
+}
+
+#wizard section:not(:first-of-type) {
+    display: none;
 }
 
 .item_thumb {
@@ -275,13 +283,30 @@ footer .container :nth-child(2){
 
 #wizard section {
     display:block;
-    margin-top:20px;
+}
+
+#wizard .twothirdCol {
+    padding:0% 3%;
+}
+
+#wizard h4 {
+    font-weight:300;
+}
+
+.desc button {
+    margin-bottom:10px;
+}
+
+
+#wizard h5 {
+    font-weight:300;
 }
 
 #guitar_pic {
     width: 80%;
     height: 180px;
     padding: 20px;
+    margin: 30px auto 10px auto;
     margin-top: 20px;
     border-radius: 20px;
     border: 1px white solid;
@@ -302,7 +327,7 @@ footer .container :nth-child(2){
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 99999; /* Stay on top */
     top: 0;
     left: 0;
     background-color: #111; /* Black*/
@@ -313,6 +338,7 @@ footer .container :nth-child(2){
 
 /* The navigation menu links */
 .sidenav a {
+    text-align: left;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;

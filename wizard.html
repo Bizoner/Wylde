@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="includes/style.css">
-    <script src="includes/jquery-3.1.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+    <script src="includes/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
 </head>
@@ -14,10 +14,12 @@
     <header>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <a href="#">Home</a>
+            <a href="wizard.html">Build a Guitar</a>
+            <a href="#">Explore</a>
+            <a href="#">Contact Us</a>
+            <a href="#">My Profile</a>
+            <a href="#">Logout</a>
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
@@ -29,33 +31,36 @@
 
     <main id="wizard">
         <article class="twothirdCol">
-            <!--<h1>Start with choosing a body...</h1>-->
-            <!--<h3>Lorem ipsum dolor sit amet, consectetur adip scingelit.-->
-                <!--Etiam sed dignissim odio. Fusce eleifend viverra tellus,</h3>-->
-            <h1>NOW THATS <span id="sectitle">YOUR</span> GUITAR!</h1>
-            <h3>Looks Awesome!<br>
-                But you can review it, and change parts if necessery by the creation menu</h3>
-            <!--<div class="center">-->
-                <!--<div>-->
-                    <!--<img src="images/pickup.png">-->
-                <!--</div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-                <!--<div><img src="images/pickup.png"></div>-->
-            <!--</div>-->
-            <!--<div class="desc">-->
-                <!--<h2>Seymour Duncan S2995</h2>-->
-                <!--<h3>Recommended For You</h3>-->
-                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed dignissim odio.Fusce eleifend viverra tellus, a suscipit arcu sodales eu. Nullam semper eget ex et egestas.</p>-->
-                <!--<button>SELECT THE PICKUP</button>-->
-            <!--</div>-->
-            <section id="guitar_pic">
+            <section>
+                <h1>Start with choosing a body...</h1>
+                <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
+                    Etiam sed dignissim odio.</h4>
+                <div class="center">
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                    <div><img src="images/pickup.png"></div>
+                </div>
+                <div class="desc">
+                    <h2>Seymour Duncan S2995</h2>
+                    <h3>Recommended For You</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed dignissim odio.Fusce eleifend viverra tellus, a suscipit arcu sodales eu.</p>
+                    <button class="next">SELECT THE PICKUP</button>
+                </div>
             </section>
             <section>
-            <h5>*Picture for demonstration only</h5>
+                <h1>NOW THATS <span id="sectitle">YOUR</span> GUITAR!</h1>
+                <h3>Looks Awesome!<br>
+                    But you can review it, and change parts if necessery by the creation menu</h3>
+                <section id="guitar_pic">
+                </section>
+                <div class="desc">
+                <a href="success.html"><button>FINISH GUITAR!</button></a>
+                    <h5>*Picture for demonstration only</h5>
+                </div>
             </section>
 
         </article>
@@ -74,21 +79,6 @@
                     <div class="item_title">Seymour Duncan S2995</div>
                     <div class="item_price">438$</div>
                 </div>
-                <div class="item">
-                    <div class="item_thumb"></div>
-                    <div class="item_title">Seymour Duncan S2995</div>
-                    <div class="item_price">438$</div>
-                </div>
-                <div class="item">
-                    <div class="item_thumb"></div>
-                    <div class="item_title">Seymour Duncan S2995</div>
-                    <div class="item_price">438$</div>
-                </div>
-                <div class="item">
-                    <div class="item_thumb"></div>
-                    <div class="item_title">Seymour Duncan S2995</div>
-                    <div class="item_price">438$</div>
-                </div>
                 <div class="item_total">
                     Total: 500 NIS
                 </div>
@@ -97,42 +87,15 @@
     </main>
 
 </div>
-
 <script src="includes/menu.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="includes/slick/slick.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.center').slick({
-            centerMode: true,
-            centerPadding: '30px',
-            infinite: true,
-            slidesToShow: 3,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-    });
 </script>
 </body>
 <footer>
+    <script src="includes/wizard.js"></script>
+    <script src="includes/jquery.easing.min.js"></script>
     <div class="container">
         <span>CONTACT US</span>
         <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
