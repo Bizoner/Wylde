@@ -23,6 +23,14 @@ p {
     text-align:justify;
 }
 
+#add {
+    position: relative;
+    right: 30px;
+    top: 5px;
+    font-size: 27px;
+    display: none;
+}
+
 .center {
     margin:0 auto;
     width:100%;
@@ -317,6 +325,27 @@ footer .container :nth-child(2){
     background-repeat: no-repeat;
 }
 
+#success #guitar_pic {
+    width:50%;
+}
+
+#success {
+    margin-top:3%;
+}
+
+#success button {
+    margin-top:0;
+    width:30%;
+
+}
+#success .desc a {
+    display:block;
+}
+
+#second_button {
+    background:grey;
+}
+
 #Half {
   width:529px;
   padding:10px;
@@ -334,6 +363,18 @@ footer .container :nth-child(2){
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#wizard h5 {
+    color:#f4364c;
+}
+
+.slick-slide[data-slick-index="0"] {
+    background: url("../images/recomend.png");
+    background-position:top right;
+    background-repeat: no-repeat;
+    background-size:43px;
+
 }
 
 /* The navigation menu links */
@@ -437,6 +478,7 @@ main {
 
 #artists {
     margin-top:30px;
+    height:160px;
 }
 
 .artist {
@@ -530,6 +572,11 @@ main {
     top: 14px;
     z-index: -1; /*put it behind the numbers*/
 }
+
+#success {
+    text-align:center;
+}
+
 #progressbar li:first-child:after {
     /*connector not needed before the first step*/
     content: none;

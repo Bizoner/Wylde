@@ -12,7 +12,6 @@ $(document).ready(function() {
     $('.center').slick({
         centerMode: true,
         centerPadding: '30px',
-        infinite: true,
         slidesToShow: 3,
         responsive: [
             {
@@ -41,7 +40,7 @@ $(document).ready(function() {
     $(".slick-next").click(function (){
         $(".item_title").text("Dimarzio 3902");
        $(".desc h2").text("Dimarzio 3902");
-       $(".desc h3").css({'display': 'none'})
+       $(".desc h5").css({'display': 'none'})
     });
 });
 
