@@ -99,6 +99,11 @@ button {
     letter-spacing: 2px;
 }
 
+button:hover {
+    background: #ff124f;
+    cursor:pointer;
+}
+
 #loginbox {
     margin-left: 3%;
     float: left;
@@ -181,10 +186,17 @@ footer {
 #profilePic {
     display:block;
     float:right;
+    border: white solid 1px;
+    border-radius: 50%;
     width:52px;
     height:52px;
-    background: url("../images/profile.png");
+    background: url("../images/profileon.png");
     background-repeat: no-repeat;
+    opacity:0.8;
+}
+
+.guestpic {
+    background: url("../images/profile.png") !important;
 }
 
 #profileName {
@@ -195,7 +207,8 @@ footer {
 
 footer .container :nth-child(1){
    float:left;
-    margin: 1.5% 3%;
+    margin-top: 8px;
+    margin-left: 26px;
 }
 
 footer .container :nth-child(2){

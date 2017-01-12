@@ -85,6 +85,7 @@ $(".next").click(function(){
     $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
     $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
     $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
+    $(".item_total").text("Total: "+438*4+"$");
 });
 
 
