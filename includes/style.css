@@ -23,6 +23,122 @@ p {
     text-align:justify;
 }
 
+button {
+    margin-top: 15px;
+    padding: 14px 26px;
+    background-color: #ff0035;
+    color: whitesmoke;
+    font-size: 1.0vw;
+    font-weight: 500;
+    font-family: raleway;
+    border: none;
+    letter-spacing: 2px;
+}
+
+button:hover {
+    background: #ff124f;
+    cursor:pointer;
+}
+
+body {
+    font-family:Raleway;
+    font-weight:300;
+    color:whitesmoke;
+}
+
+html {
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+  text-align:center;
+  height:130px;
+  width:100%;
+  top:0px;
+  left:0px;
+    float:left;
+}
+
+footer {
+  width:100%;
+  bottom:0px;
+  left:0px;
+  position:fixed;
+  height:50px;
+  background-color:#2c3e50;
+  opacity:0.8;
+}
+
+footer .container :nth-child(1){
+   float:left;
+    margin-top: 8px;
+    margin-left: 26px;
+}
+
+footer .container :nth-child(2){
+    float:right;
+    margin: 1.5% 3%;
+}
+
+main {
+    width:100%;
+    transition: margin-left .5s;
+    margin-top:5%;
+    float:left;
+}
+
+#main {
+    padding: 20px;
+}
+
+#analysis {
+    padding: 0;
+    text-align:center;
+}
+
+#analysis input {
+    width:28%;
+    font-size:15px;
+    padding:1%;
+    padding-left:4%;
+    background: rgba(255, 255, 255, 0.05);
+    color:#6d717c;
+    font-family:Raleway;
+    font-weight:200;
+    border:1px grey solid;
+    background-image:url(../images/search.png);
+    background-position:6px 8px;
+    background-repeat: no-repeat;
+}
+
+#wizard section:not(:first-of-type) {
+    display: none;
+}
+
+#wizard section {
+    display:block;
+}
+
+#wizard .twothirdCol {
+    padding:0% 3%;
+}
+
+#wizard h4 {
+    font-weight:300;
+}
+
+#wizard h5 {
+    font-weight:300;
+}
+
+#wizard h5 {
+    color:#f4364c;
+}
+
 #add {
     position: relative;
     right: 30px;
@@ -36,6 +152,10 @@ p {
     width:100%;
     margin-bottom:20px;
     margin-top:30px;
+}
+
+.center button {
+    margin-top:0px;
 }
 
 .slick-slide {
@@ -60,6 +180,14 @@ p {
     margin:0 auto;
 }
 
+.slick-slide[data-slick-index="0"] {
+    background: url("../images/recomend.png");
+    background-position:top right;
+    background-repeat: no-repeat;
+    background-size:43px;
+
+}
+
 #choose section {
     float:left;
     width:50%;
@@ -79,29 +207,6 @@ loginbox {
     width:350px;
     height:305px;
     text-align:center;
-}
-
-#google {
-    margin-top:15px;
-    background-image:url(../images/google.jpg);
-    height:47px;
-}
-
-button {
-    margin-top: 15px;
-    padding: 14px 26px;
-    background-color: #ff0035;
-    color: whitesmoke;
-    font-size: 1.0vw;
-    font-weight: 500;
-    font-family: raleway;
-    border: none;
-    letter-spacing: 2px;
-}
-
-button:hover {
-    background: #ff124f;
-    cursor:pointer;
 }
 
 #loginbox {
@@ -142,39 +247,10 @@ button:hover {
     background-repeat: no-repeat;
 }
 
-
-body {
-    font-family:Raleway;
-    font-weight:300;
-    color:whitesmoke;
-}
-
-html {
-    background: url(../images/bg.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-header {
-  text-align:center;
-  height:130px;
-  width:100%;
-  top:0px;
-  left:0px;
-    float:left;
-}
-
-footer {
-  width:100%;
-  bottom:0px;
-  left:0px;
-  position:fixed;
-  height:50px;
-  background-color:#2c3e50;
-  opacity:0.8;
-
+#google {
+    margin-top:15px;
+    background-image:url(../images/google.jpg);
+    height:47px;
 }
 
 #headright {
@@ -195,32 +271,10 @@ footer {
     opacity:0.8;
 }
 
-.guestpic {
-    background: url("../images/profile.png") !important;
-}
-
 #profileName {
     float: left;
     padding-top: 12%;
     margin-right: 20px;
-}
-
-footer .container :nth-child(1){
-   float:left;
-    margin-top: 8px;
-    margin-left: 26px;
-}
-
-footer .container :nth-child(2){
-    float:right;
-    margin: 1.5% 3%;
-}
-
-
-.container {
-  width:80%;
-  padding:0px 40px;
-  margin:0 auto;
 }
 
 #menuicon {
@@ -247,6 +301,62 @@ footer .container :nth-child(2){
     padding:20px;
 }
 
+#sectitle {
+    color:#f4364c;
+}
+
+#guitar_pic {
+    width: 80%;
+    height: 180px;
+    padding: 20px;
+    margin: 30px auto 10px auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px white solid;
+    background: url(../images/guitar.png);
+    background-color: rgba(255, 255, 255, 0.1);
+    background-size: 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+#success {
+    margin-top:3%;
+}
+
+#success #guitar_pic {
+    width:50%;
+    height : 150px;
+}
+
+#success button {
+    margin-top:0;
+    width:30%;
+
+}
+#success .desc a {
+    display:block;
+}
+
+#second_button {
+    background:grey;
+}
+
+#Half {
+  width:529px;
+  padding:10px;
+}
+
+.guestpic {
+    background: url("../images/profile.png") !important;
+}
+
+.container {
+  width:80%;
+  padding:0px 40px;
+  margin:0 auto;
+}
+
 .item {
     background: rgba(255, 255, 255, 0.11);
     padding:10px;
@@ -258,13 +368,6 @@ footer .container :nth-child(2){
     background: rgba(255, 255, 255, 0.41);
 }
 
-#sectitle {
-    color:#f4364c;
-}
-
-#wizard section:not(:first-of-type) {
-    display: none;
-}
 
 .item_thumb {
     width:39px;
@@ -302,66 +405,14 @@ footer .container :nth-child(2){
   float:left;
 }
 
-#wizard section {
-    display:block;
-}
-
-#wizard .twothirdCol {
-    padding:0% 3%;
-}
-
-#wizard h4 {
-    font-weight:300;
+.desc {
+    margin:0 auto;
+    width:80%;
+ text-align:center;
 }
 
 .desc button {
     margin-bottom:10px;
-}
-
-
-#wizard h5 {
-    font-weight:300;
-}
-
-#guitar_pic {
-    width: 80%;
-    height: 180px;
-    padding: 20px;
-    margin: 30px auto 10px auto;
-    margin-top: 20px;
-    border-radius: 20px;
-    border: 1px white solid;
-    background: url(../images/guitar.png);
-    background-color: rgba(255, 255, 255, 0.1);
-    background-size: 80%;
-    background-position: 50%;
-    background-repeat: no-repeat;
-}
-
-#success #guitar_pic {
-    width:50%;
-}
-
-#success {
-    margin-top:3%;
-}
-
-#success button {
-    margin-top:0;
-    width:30%;
-
-}
-#success .desc a {
-    display:block;
-}
-
-#second_button {
-    background:grey;
-}
-
-#Half {
-  width:529px;
-  padding:10px;
 }
 
 /* The side navigation menu */
@@ -376,18 +427,6 @@ footer .container :nth-child(2){
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-#wizard h5 {
-    color:#f4364c;
-}
-
-.slick-slide[data-slick-index="0"] {
-    background: url("../images/recomend.png");
-    background-position:top right;
-    background-repeat: no-repeat;
-    background-size:43px;
-
 }
 
 /* The navigation menu links */
@@ -416,36 +455,6 @@ footer .container :nth-child(2){
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-main {
-    width:100%;
-    transition: margin-left .5s;
-    margin-top:5%;
-    float:left;
-}
-
-#main {
-    padding: 20px;
-}
-
-#analysis {
-    padding: 0;
-    text-align:center;
-}
-
-#analysis input {
-    width:28%;
-    font-size:15px;
-    padding:1%;
-    padding-left:4%;
-    background: rgba(255, 255, 255, 0.05);
-    color:#6d717c;
-    font-family:Raleway;
-    font-weight:200;
-    border:1px grey solid;
-    background-image:url(../images/search.png);
-    background-position:6px 8px;
-    background-repeat: no-repeat;
-}
 
 #build_icon {
     transition: margin-top .5s;
@@ -462,10 +471,6 @@ main {
     margin-top:15px;
 }
 
-.build_text:hover {
-    background-color: rgba(104, 116, 139, 0.7);
-}
-
 #lucky_icon {
     transition: margin-top .5s;
     display:block;
@@ -475,6 +480,10 @@ main {
     background-image:url(../images/lucky.png);
     background-repeat: no-repeat;
     margin-bottom:15px;
+}
+
+.build_text:hover {
+    background-color: rgba(104, 116, 139, 0.7);
 }
 
 .build_text {
@@ -516,13 +525,6 @@ main {
 }
 
 
-.desc {
-    margin:0 auto;
-    width:80%;
- text-align:center;
-}
-
-
 .slick-prev {
     left:0px !important;
     z-index:9999;
@@ -539,10 +541,6 @@ main {
 
 .slick-prev:before, .slick-next:before {
     font-size:40px !important;
-}
-
-.center button {
-    margin-top:0px;
 }
 
 #progressbar {
@@ -586,10 +584,6 @@ main {
     z-index: -1; /*put it behind the numbers*/
 }
 
-#success {
-    text-align:center;
-}
-
 #progressbar li:first-child:after {
     /*connector not needed before the first step*/
     content: none;
@@ -601,15 +595,17 @@ main {
     color: white;
 }
 
-
+#success {
+    text-align:center;
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) { /*not supported yet*/
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) { /*not supported yet*/
     #profileName {display:none}
     .twothirdCol {width:100%;}
     .thirdCol {width:100%;}
