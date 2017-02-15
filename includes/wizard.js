@@ -7,9 +7,188 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
+var iterator = 0;
+var step = 0;
 
-$(document).ready(function() {
-    $('.center').slick({
+// TODO CAROUSEL LOGIC:
+// 1. Get all current parts to array of part name
+// 2. Sort array according to taste
+// 3. Set all images in div׳s to create the carousel
+// 4. keep Iterator, clicking on right or left at carousel will trigger +1 in array
+// 5. text + right side will change accordingly
+
+var parts = [
+    [
+        {
+            "title": "Title1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Blues"
+        },
+        {
+            "title": "Title2",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Rock"
+        },
+        {
+            "title": "Title3",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Country"
+        },
+        {
+            "title": "Pickup1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/profile.png",
+            "price": "50",
+            "style": "Heavy Metal"
+        },
+        {
+            "title": "THIS ONE",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Classic"
+        }
+    ],
+    [
+        {
+            "title": "Title1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Blues"
+        },
+        {
+            "title": "Title2",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Rock"
+        },
+        {
+            "title": "Title3",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Country"
+        },
+        {
+            "title": "Body1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/profile.png",
+            "price": "50",
+            "style": "Heavy Metal"
+        },
+        {
+            "title": "THIS ONE",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Classic"
+        }
+    ],
+    [
+        {
+            "title": "Title1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Blues"
+        },
+        {
+            "title": "Title2",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Rock"
+        },
+        {
+            "title": "Title3",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Country"
+        },
+        {
+            "title": "Neck1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/profile.png",
+            "price": "50",
+            "style": "Heavy Metal"
+        },
+        {
+            "title": "THIS ONE",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Classic"
+        }
+    ],
+    [
+        {
+            "title": "Title1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Blues"
+        },
+        {
+            "title": "Title2",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Rock"
+        },
+        {
+            "title": "Title3",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Country"
+        },
+        {
+            "title": "Bridge1",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/profile.png",
+            "price": "50",
+            "style": "Heavy Metal"
+        },
+        {
+            "title": "THIS ONE",
+            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
+            "img": "images/pickup.png",
+            "price": "50",
+            "style": "Classic"
+        }
+    ]
+];
+
+
+var bestStyle = "Heavy Metal";
+
+function moveSelectedFirst(array) {
+    var i = 0;
+    while (i < array.length) {
+        if (array[i].style == bestStyle) {
+            break;
+        }
+        i++;
+    }
+    var index = i;
+    var temp = array[0];
+    array[0] = array[index];
+    array[index] = temp;
+    return array;
+};
+
+
+function createCarousel(classname) {
+    $("." + classname).slick({
         centerMode: true,
         centerPadding: '30px',
         slidesToShow: 3,
@@ -34,47 +213,131 @@ $(document).ready(function() {
             }
         ]
     });
-});
+};
 
-$(document).ready(function() {
-    $(".slick-next").click(function (){
-        $(".item_title").text("Dimarzio 3902");
-       $(".desc h2").text("Dimarzio 3902");
-       $(".desc h5").css({'display': 'none'})
+function initFirstCarousel() {
+    for (var i = 0; i < parts[0].length; i++) {
+        $(".twothirdCol .carouselA").append('<div><img src="' + parts[0][i].img + '"></div>');
+    }
+    $(".desc h2").text(parts[0][0].title);
+    $(".desc p").text(parts[0][0].description);
+    $("#builder section:nth-child("+step+2+") .item_title").html(parts[0][0].title);
+    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[0][0].img + ")");
+    $("#builder section:nth-child("+step+2+") .item_price").html(parts[0][0].price+"$");
+    return "carouselA";
+};
+
+function initSecondCarousel() {
+    for (var i = 0; i < parts[1].length; i++) {
+        $(".twothirdCol .carouselB").append('<div><img src="' + parts[1][i].img + '"></div>');
+    }
+    $(".desc h2").text(parts[1][0].title);
+    $(".desc p").text(parts[1][0].description);
+    $("#builder section:nth-child("+step+2+") .item_title").html(parts[1][0].title);
+    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[1][0].img + ")");
+    $("#builder section:nth-child("+step+2+") .item_price").html(parts[1][0].price+"$");
+    return "carouselB";
+};
+
+function initThirdCarousel() {
+    for (var i = 0; i < parts[2].length; i++) {
+        $(".twothirdCol .carouselC").append('<div><img src="' + parts[2][i].img + '"></div>');
+    }
+    $(".desc h2").text(parts[2][0].title);
+    $(".desc p").text(parts[2][0].description);
+    $("#builder section:nth-child("+step+2+") .item_title").html(parts[2][0].title);
+    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[2][0].img + ")")
+    $("#builder section:nth-child("+step+2+") .item_price").html(parts[2][0].price+"$");;
+    return "carouselC";
+};
+
+function initFourthCarousel() {
+    for (var i = 0; i < parts[3].length; i++) {
+        $(".twothirdCol .carouselD").append('<div><img src="' + parts[3][i].img + '"></div>');
+    }
+    $(".desc h2").text(parts[3][0].title);
+    $(".desc p").text(parts[3][0].description);
+    $("#builder section:nth-child("+step+2+") .item_title").html(parts[3][0].title);
+    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[3][0].img + ")");
+    $("#builder section:nth-child("+step+2+") .item_price").html(parts[3][0].price+"$");
+    return "carouselD";
+
+};
+
+
+$(document).ready(function () {
+    // INITILIZE FIRST
+    parts[0] = moveSelectedFirst(parts[0]);
+    // INITILIZE REST
+    for (var i = 1; i < parts.length; i++) {
+        parts[i] = moveSelectedFirst(parts[i]);
+    }
+    createCarousel(initFirstCarousel("carouselA"));
+
+    $(".twothirdCol").on("click",".slick-next",function () {
+        iterator++;
+        if (iterator == parts[step].length) {
+            iterator = 0;
+        }
+        $(".desc h2").text(parts[step][iterator].title);
+        $(".desc p").text(parts[step][iterator].description);
+        $(".slick-next").css("pointer-events", "none");
+        $("#builder section:nth-child("+step+2+") .item_title").html(parts[step][iterator].title);
+        $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[step][iterator].img + ")");
+        $("#builder section:nth-child("+step+2+") .item_price").html(parts[step][iterator].price+"$");
+        setTimeout(function () {
+            $(".slick-next").css("pointer-events", "auto");
+        }, 500)
+    });
+    $(".slick-prev").click(function () {
+        iterator--;
+        if (iterator == -1) {
+            iterator = parts[step].length - 1;
+        }
+        $(".desc h2").text(parts[step][iterator].title);
+        $(".desc p").text(parts[step][iterator].description);
+        $(".slick-prev").css("pointer-events", "none");
+        $("#builder section:nth-child("+step+2+") .item_title").html(parts[step][iterator].title);
+        $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[step][iterator].img + ")");
+        $("#builder section:nth-child("+step+2+") .item_price").html(parts[step][iterator].price+"$");
+        setTimeout(function () {
+            $(".slick-prev").css("pointer-events", "auto");
+        }, 500)
+
     });
 });
 
-$(".next").click(function(){
-    if(animating) return false;
+$("#wizard").on("click",".next", function () {
+    if (animating) return false;
     animating = true;
 
     current_fs = $(this).parent().parent();
     next_fs = $(this).parent().parent().next();
-
+    step++;
     //activate next step on progressbar using the index of next_fs
     // $("#progressbar li").eq($("section").index(current_fs)).addClass("active");
-    $("#progressbar li").addClass("active");
+    $("#progressbar li").eq($("#wizard section").index(next_fs)).addClass("active");
     //show the next fieldset
     next_fs.show();
     //hide the current fieldset with style
     current_fs.animate({opacity: 0}, {
-        step: function(now, mx) {
+        step: function (now, mx) {
             //as the opacity of current_fs reduces to 0 - stored in "now"
             //1. scale current_fs down to 80%
             scale = 1 - (1 - now) * 0.2;
             //2. bring next_fs from the right(50%)
-            left = (now * 50)+"%";
+            left = (now * 50) + "%";
             //3. increase opacity of next_fs to 1 as it moves in
             opacity = 1 - now;
             current_fs.css({
-                'transform': 'scale('+scale+')',
-                'width' : '45%',
+                'transform': 'scale(' + scale + ')',
+                'width': '45%',
                 'position': 'absolute'
             });
             next_fs.css({'left': left, 'opacity': opacity});
         },
         duration: 800,
-        complete: function(){
+        complete: function () {
             current_fs.hide();
             animating = false;
         },
@@ -82,15 +345,30 @@ $(".next").click(function(){
         easing: 'easeInOutBack'
     });
 
-    $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
-    $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
-    $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">Seymour Duncan S2995</div><div class="item_price">438$</div></div>');
-    $(".item_total").text("Total: "+438*4+"$");
+    var current_title = $(".desc h2").html();
+
+    if (step<4) {
+        $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">' + current_title + '</div><div class="item_price">438$</div></div>');
+    }
+
+
+    switch (step) {
+        case 1:
+            createCarousel(initSecondCarousel("carouselB"));
+            break;
+        case 2:
+            createCarousel(initThirdCarousel("carouselC"));
+            break;
+        case 3:
+            createCarousel(initFourthCarousel("carouselD"));
+            break;
+    }
+
 });
 
 
-$(".previous").click(function(){
-    if(animating) return false;
+$(".previous").click(function () {
+    if (animating) return false;
     animating = true;
 
     current_fs = $(this).parent();
@@ -103,19 +381,16 @@ $(".previous").click(function(){
     previous_fs.show();
     //hide the current fieldset with style
     current_fs.animate({opacity: 0}, {
-        step: function(now, mx) {
-            //as the opacity of current_fs reduces to 0 - stored in "now"
-            //1. scale previous_fs from 80% to 100%
+        step: function (now, mx) {
+
             scale = 0.8 + (1 - now) * 0.2;
-            //2. take current_fs to the right(50%) - from 0%
-            left = ((1-now) * 50)+"%";
-            //3. increase opacity of previous_fs to 1 as it moves in
+            left = ((1 - now) * 50) + "%";
             opacity = 1 - now;
             current_fs.css({'left': left});
-            previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+            previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
         },
         duration: 800,
-        complete: function(){
+        complete: function () {
             current_fs.hide();
             animating = false;
         },
@@ -124,6 +399,7 @@ $(".previous").click(function(){
     });
 });
 
-$(".submit").click(function(){
+$(".submit").click(function () {
     return false;
 });
+

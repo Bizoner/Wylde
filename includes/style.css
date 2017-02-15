@@ -144,6 +144,7 @@ main {
     right: 30px;
     top: 5px;
     font-size: 27px;
+    margin-right: -15px;
     display: none;
 }
 
@@ -338,6 +339,10 @@ loginbox {
     display:block;
 }
 
+#success .desc {
+    margin-top:30px;
+}
+
 #second_button {
     background:grey;
 }
@@ -373,6 +378,7 @@ loginbox {
     width:39px;
     height:31px;
     background-image:url("../images/thumb.jpg");
+    background-size:cover;
     float:left;
 }
 
