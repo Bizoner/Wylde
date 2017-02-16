@@ -35,4 +35,21 @@
 		mysqli_close($connection);
 	}
 
+	if (isset($_POST['insertGuitar'])){
+		$guitarName = $_POST['name'];
+		$pickup = $_POST['pickup'];
+		$neck = $_POST['neck'];
+		$body = $_POST['body'];
+		$bridge = $_POST['bridge'];
+		$price = $_POST['price'];
+		$email = $_POST['email'];
+		$private = $_POST['private'];
+		$img = $_POST['img'];
+		$query = "INSERT INTO tbl_guitars_208 VALUES ('$guitarName','$email','$private', '$pickup', '$body', '$neck', '$bridge', '$price', '$img')";
+		if(!($temp = mysqli_query ($connection, $query)))
+			echo "Update Failed ";
+		else
+			echo "success";
+	}
+
 ?>

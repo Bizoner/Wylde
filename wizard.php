@@ -12,6 +12,10 @@
 <body>
 <?php
     include('includes/dbConnection.php');
+    if (isset($_POST['topGenre']))
+        $topGenre = $_POST['topGenre'];
+    else
+        $topGenre = 'Metal';
 ?>
 <div class="container">
     <header>
@@ -39,7 +43,7 @@
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselA">
                 <?php
-                        $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by topGenre='Metal' DESC";
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by topGenre='$topGenre' DESC";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
                             echo '<div>';
@@ -63,7 +67,7 @@
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselB">
                     <?php
-                        $query = "SELECT * from tbl_guitarParts_208 where type = 2 order by topGenre='Metal' DESC";
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 2 order by topGenre='$topGenre' DESC";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
                             echo '<div>';
@@ -87,7 +91,7 @@
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselC">
                     <?php
-                        $query = "SELECT * from tbl_guitarParts_208 where type = 3 order by topGenre='Metal' DESC";
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 3 order by topGenre='$topGenre' DESC";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
                             echo '<div>';
@@ -111,7 +115,7 @@
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselD">
                     <?php
-                        $query = "SELECT * from tbl_guitarParts_208 where type = 4 order by topGenre='Metal' DESC";
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 4 order by topGenre='$topGenre' DESC";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
                             echo '<div>';
@@ -136,9 +140,10 @@
                 <section id="guitar_pic">
                 </section>
                 <div class="desc">
-                <a href="success.html"><button>FINISH GUITAR!</button></a>
+                <button class="finish">FINISH GUITAR!</button>
                     <h5>*Picture for demonstration only</h5>
                 </div>
+                <div id="overlay" class="overlay"></div>
             </section>
 
         </article>
@@ -159,6 +164,13 @@
                 </div>
             </section>
         </article>
+        <div id="popup" class="popup">
+            <span class="closePopup">X</span>
+            <label>Name your guitar &nbsp;<input class="guitarName" type="text" name="guitarName" placeholder="Guitar name"></label>
+            <img src="images/guitar.png">
+            <label>public?<input class="public" type="checkbox" name="public"></label>
+            <button class="submit">Finish</button>
+        </div>
     </main>
 
 </div>

@@ -9,6 +9,14 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var iterator = 0;
 var step = 0;
+var pickup;
+var body;
+var neck;
+var bridge;
+var email;
+var private = 1;
+var name;
+var price = 1200;
 
 // TODO CAROUSEL LOGIC:
 // 1. Get all current parts to array of part name
@@ -19,30 +27,7 @@ var step = 0;
 
 
 var bestStyle = "Metal";
-
- function bodyLoad(){
-    if (!sessionStorage.getItem("email"))
-        window.location="index.html";
-    else{
-        $.ajax({
-               url: 'includes/call.php',
-               data: {'buildGuitar' : 'buildGuitar'},
-               type: 'post',
-               dataType: 'JSON',
-               success: function (response){
-                        console.log("Success");
-                        callbackResponse(response);
-                    },
-               error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr);}
-            });
-    }
- }
-
-function callbackResponse(data){
-    //Here we'll update the pars[] data
-    console.log(data);
-    document.getElementById("wizard").style.visibility="visible";
-}
+var email = "yossit@gmail.com";
 
 function moveSelectedFirst(array) {
     var i = 0;
@@ -90,9 +75,37 @@ function createCarousel(classname) {
 
 $(document).ready(function () {
     createCarousel("carouselA");
-    console.log($(".slide-current");
-    $(".desc h2").text($(".slide-current h2").text());
-    $(".desc p").text($(".slide-current p").text());
+    $(".desc h2").text($(".slick-current h2").text());
+    $(".desc p").text($(".slick-current p").text());
+});
+
+$("#wizard").on("click", ".finish", function(){
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('popup').style.display = 'block';
+});
+
+$("#wizard").on("click", ".submit", function(){
+    name = document.getElementsByClassName("guitarName")[0].value;
+    if (name=="")
+        name = "myGuitar";
+    var src = $("#popup img").attr('src');
+    if (document.getElementsByClassName("public")[0].checked)
+        private = 0;
+    console.log(private + " " + name + " " + bridge);
+    $.ajax({
+        url: 'includes/call.php',
+       data: {'insertGuitar' : 'insertGuitar','name' : name, 'email' : email, 'pickup' : pickup, 'neck' : neck,
+              'body' : body, 'bridge' : bridge, 'private' : private, 'price' : price, 'img' : src},
+       type: 'post',
+       success: function (response){console.log("Success"); window.location = 'success.html'},
+       error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}
+    });
+});
+
+$("#wizard").on("click", ".closePopup", function(){
+
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
 });
 
 $("#wizard").on("click",".next", function () {
@@ -141,15 +154,31 @@ $("#wizard").on("click",".next", function () {
 
 
     switch (step) {
-        case 1:
-            createCarousel(initSecondCarousel("carouselB"));
+        case 1:{
+            pickup = $(".desc h2").text();
+            createCarousel("carouselB");            
+            $(".desc h2").text($(".slick-current h2").text());
+            $(".desc p").text($(".slick-current p").text());
             break;
-        case 2:
-            createCarousel(initThirdCarousel("carouselC"));
+        }
+        case 2:{
+            body = $(".desc h2").text();
+            createCarousel("carouselC");
+            $(".desc h2").text($(".slick-current h2").text());
+            $(".desc p").text($(".slick-current p").text());
             break;
-        case 3:
-            createCarousel(initFourthCarousel("carouselD"));
+        }
+        case 3:{
+            neck = $(".desc h2").text();
+            createCarousel("carouselD");
+            $(".desc h2").text($(".slick-current h2").text());
+            $(".desc p").text($(".slick-current p").text());
             break;
+        }
+        case 4:{
+            bridge = $(".desc h2").text();
+            break;
+        }
     }
 
 });
@@ -185,9 +214,5 @@ $(".previous").click(function () {
         //this comes from the custom easing plugin
         easing: 'easeInOutBack'
     });
-});
-
-$(".submit").click(function () {
-    return false;
 });
 
