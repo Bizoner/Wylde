@@ -37,8 +37,8 @@
                 <h1>Start with choosing a body...</h1>
                 <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</h4>
+                <div class="carouselA">
                 <?php
-                    echo '<div class="carouselA">';
                         $query = "SELECT * from tbl_guitarParts_208 where type = 1";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
@@ -46,9 +46,9 @@
                             echo '<img src=' . $row->img . '>';
                             echo '<H2>' . $row->name . '</H2>';
                             echo '<p>' . $row->description . '</p>';
+                            echo '</div>';
                         }
                     ?>
-                    </div>
                 </div>
                 <div class="desc">
                     <h2>Loading...</h2>
