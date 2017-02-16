@@ -10,7 +10,6 @@
                url: 'includes/call.php',
                data: {'login' : sessionStorage.getItem('email')},
                type: 'post',
-               async:false,
                success: function (response){
                         console.log("Success");
                         callbackResponse(response);

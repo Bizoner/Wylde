@@ -9,7 +9,10 @@
     <link rel="stylesheet" type="text/css" href="includes/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
 </head>
-<body onLoad="bodyLoad()">
+<body>
+<?php
+    include('includes/dbConnection.php');
+?>
 <div class="container">
     <header>
         <div id="mySidenav" class="sidenav">
@@ -28,18 +31,24 @@
         </section>
         <a href="index.html" id="logo"></a>
     </header>
-
     <main id="wizard">
         <article class="twothirdCol">
             <section>
                 <h1>Start with choosing a body...</h1>
                 <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</h4>
-                <div class="carouselA">
-                    <!--TODO INSERT PICKUP DATA HERE-->
-                    <img src="{{img}}">
-                    <H2>{{title}}</H2>
-                    <p>{{description}}</p>
+                <?php
+                    echo '<div class="carouselA">';
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 1";
+                        $result = mysqli_query($connection, $query);
+                        while ($row = $result->fetch_object()){
+                            echo '<div>';
+                            echo '<img src=' . $row->img . '>';
+                            echo '<H2>' . $row->name . '</H2>';
+                            echo '<p>' . $row->description . '</p>';
+                        }
+                    ?>
+                    </div>
                 </div>
                 <div class="desc">
                     <h2>Loading...</h2>

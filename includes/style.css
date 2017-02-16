@@ -115,10 +115,6 @@ main {
     background-repeat: no-repeat;
 }
 
-#wizard{
-    visibility: hidden;
-}
-
 #wizard section:not(:first-of-type) {
     display: none;
 }
