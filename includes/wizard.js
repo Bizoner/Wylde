@@ -17,8 +17,6 @@ var step = 0;
 // 4. keep Iterator, clicking on right or left at carousel will trigger +1 in array
 // 5. text + right side will change accordingly
 
-var parts = [];
-
 
 var bestStyle = "Heavy Metal";
 
@@ -90,96 +88,9 @@ function createCarousel(classname) {
     });
 };
 
-function initFirstCarousel() {
-    for (var i = 0; i < parts[0].length; i++) {
-        $(".twothirdCol .carouselA").append('<div><img src="' + parts[0][i].img + '"></div>');
-    }
-    $(".desc h2").text(parts[0][0].title);
-    $(".desc p").text(parts[0][0].description);
-    $("#builder section:nth-child("+step+2+") .item_title").html(parts[0][0].title);
-    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[0][0].img + ")");
-    $("#builder section:nth-child("+step+2+") .item_price").html(parts[0][0].price+"$");
-    return "carouselA";
-};
-
-function initSecondCarousel() {
-    for (var i = 0; i < parts[1].length; i++) {
-        $(".twothirdCol .carouselB").append('<div><img src="' + parts[1][i].img + '"></div>');
-    }
-    $(".desc h2").text(parts[1][0].title);
-    $(".desc p").text(parts[1][0].description);
-    $("#builder section:nth-child("+step+2+") .item_title").html(parts[1][0].title);
-    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[1][0].img + ")");
-    $("#builder section:nth-child("+step+2+") .item_price").html(parts[1][0].price+"$");
-    return "carouselB";
-};
-
-function initThirdCarousel() {
-    for (var i = 0; i < parts[2].length; i++) {
-        $(".twothirdCol .carouselC").append('<div><img src="' + parts[2][i].img + '"></div>');
-    }
-    $(".desc h2").text(parts[2][0].title);
-    $(".desc p").text(parts[2][0].description);
-    $("#builder section:nth-child("+step+2+") .item_title").html(parts[2][0].title);
-    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[2][0].img + ")")
-    $("#builder section:nth-child("+step+2+") .item_price").html(parts[2][0].price+"$");;
-    return "carouselC";
-};
-
-function initFourthCarousel() {
-    for (var i = 0; i < parts[3].length; i++) {
-        $(".twothirdCol .carouselD").append('<div><img src="' + parts[3][i].img + '"></div>');
-    }
-    $(".desc h2").text(parts[3][0].title);
-    $(".desc p").text(parts[3][0].description);
-    $("#builder section:nth-child("+step+2+") .item_title").html(parts[3][0].title);
-    $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[3][0].img + ")");
-    $("#builder section:nth-child("+step+2+") .item_price").html(parts[3][0].price+"$");
-    return "carouselD";
-
-};
-
-
 $(document).ready(function () {
-    // INITILIZE FIRST
-    parts[0] = moveSelectedFirst(parts[0]);
-    // INITILIZE REST
-    for (var i = 1; i < parts.length; i++) {
-        parts[i] = moveSelectedFirst(parts[i]);
-    }
-    createCarousel(initFirstCarousel("carouselA"));
+    createCarousel("carouselA");
 
-    $(".twothirdCol").on("click",".slick-next",function () {
-        iterator++;
-        if (iterator == parts[step].length) {
-            iterator = 0;
-        }
-        $(".desc h2").text(parts[step][iterator].title);
-        $(".desc p").text(parts[step][iterator].description);
-        $(".slick-next").css("pointer-events", "none");
-        $("#builder section:nth-child("+step+2+") .item_title").html(parts[step][iterator].title);
-        $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[step][iterator].img + ")");
-        $("#builder section:nth-child("+step+2+") .item_price").html(parts[step][iterator].price+"$");
-        setTimeout(function () {
-            $(".slick-next").css("pointer-events", "auto");
-        }, 500)
-    });
-    $(".slick-prev").click(function () {
-        iterator--;
-        if (iterator == -1) {
-            iterator = parts[step].length - 1;
-        }
-        $(".desc h2").text(parts[step][iterator].title);
-        $(".desc p").text(parts[step][iterator].description);
-        $(".slick-prev").css("pointer-events", "none");
-        $("#builder section:nth-child("+step+2+") .item_title").html(parts[step][iterator].title);
-        $("#builder section:nth-child("+step+2+") .item_thumb").css("background-image", "url(" + parts[step][iterator].img + ")");
-        $("#builder section:nth-child("+step+2+") .item_price").html(parts[step][iterator].price+"$");
-        setTimeout(function () {
-            $(".slick-prev").css("pointer-events", "auto");
-        }, 500)
-
-    });
 });
 
 $("#wizard").on("click",".next", function () {
