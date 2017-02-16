@@ -88,14 +88,25 @@ $("#wizard").on("click", ".submit", function(){
     name = document.getElementsByClassName("guitarName")[0].value;
     if (name=="")
         name = "myGuitar";
-    var src = $("#popup img").attr('src');
+    var src = "images/guitarup.png";
     if (document.getElementsByClassName("public")[0].checked)
         private = 0;
-    console.log(private + " " + name + " " + bridge);
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    } 
+    var today = dd+'/'+mm+'/'+yyyy;
     $.ajax({
         url: 'includes/call.php',
        data: {'insertGuitar' : 'insertGuitar','name' : name, 'email' : email, 'pickup' : pickup, 'neck' : neck,
-              'body' : body, 'bridge' : bridge, 'private' : private, 'price' : price, 'img' : src},
+              'body' : body, 'bridge' : bridge, 'private' : private, 'price' : price, 'img' : src, 'created' : today},
        type: 'post',
        success: function (response){console.log("Success"); window.location = 'success.html'},
        error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}

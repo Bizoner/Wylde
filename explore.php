@@ -10,9 +10,10 @@
     <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
     <script type="text/javascript" src="includes/slick/slick.min.js"></script>
     <script src="includes/jquery.easing.min.js"></script>
+    <script src="includes/explore.js"></script>
     <style>
         #explore {margin-top:3%;}
-        .explorecarousel img {height:350px;}
+        .exploreCarousel img {height:350px;}
         .status {float:left;}
         .dot {
             float: left;
@@ -22,7 +23,7 @@
             border-radius: 20px;
             margin: 4px 6px 0px 0px;
             border: white solid 1px;}
-        .plusicon {float: right;
+        .plusIcon {float: right;
             color: #2c3241;
             font-size: 20px;
             font-weight: 400;
@@ -36,8 +37,8 @@
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.14);
             border-radius: 15px;}
-        .explorecarousel{margin-top:20px;}
-        .explorecarousel h3, .explorecarousel p {margin-bottom:0; padding:10px; text-align:center;}
+        .exploreCarousel{margin-top:20px;}
+        .exploreCarousel h3, .exploreCarousel p {margin-bottom:0; padding:10px; text-align:center;}
         #explore .slick-dots {bottom:-50px;}
         #lightbox {
             display:none;
@@ -48,7 +49,11 @@
             height: 100%;
             z-index: 999999;
             background: rgba(8, 10, 12, 0.85);
+            text-align: center;
         }
+
+        #lightbox h3{margin : 10px;}
+
         .lbcontent {
             background: #282d3c;
             width: 40%;
@@ -65,7 +70,12 @@
 </head>
 <body>
 <?php
-include('includes/dbConnection.php');
+    include('includes/dbConnection.php');
+    if (isset($_POST['topGenre']))
+        $topGenre = $_POST['topGenre'];
+    else
+        $topGenre = 'Metal';
+    $email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -89,85 +99,24 @@ include('includes/dbConnection.php');
         <h1>Explore our catalog...</h1>
         <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
             Etiam sed dignissim odio.</h4>
-        <div class="explorecarousel">
-            <div>
-                <article>
+        <div class="exploreCarousel">
+            <?php
+                $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
+                $result = mysqli_query($connection, $query);
+                while ($row = $result->fetch_object()){
+                    echo '<div>
+                         <article>
                     <section class="guitar_top">
-                        <div class="dot"></div>
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
-            <div>
-                <article>
-                    <section class="guitar_top">
-                        <div class="status">Shipped</div>
-                        <div class="plusicon">+</div>
-                    </section>
-                    <img src="images/guitarup.png">
-                    <h3>Wylder</h3>
-                    <p>03/05/17</p>
-                    <article>
-            </div>
+                    <div class="plusIcon">+</div>
+                    </section>';
+                    echo '<img src=' . $row->img . '>';
+                    echo '<h3>' . $row->guitarName . '</h3>';
+                    echo '<p>' . $row->created . '</p>';
+                    echo '</article>
+                          </div>';
+                }
+            ?>
+           
         </div>
         <div id="lightbox">
             <div class="lbcontent">
@@ -186,7 +135,7 @@ include('includes/dbConnection.php');
     <script>
         $(document).ready(function () {
 
-            $('.explorecarousel').slick({
+            $('.exploreCarousel').slick({
                 dots: true,
                 infinite: true,
                 speed: 300,
@@ -227,4 +176,9 @@ include('includes/dbConnection.php');
     </script>
 </footer>
 </body>
+<?php
+    if ($result!=null)
+        mysqli_free_result($result);
+    mysqli_close($connection);
+?>
 </html>
