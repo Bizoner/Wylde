@@ -18,7 +18,7 @@ var step = 0;
 // 5. text + right side will change accordingly
 
 
-var bestStyle = "Heavy Metal";
+var bestStyle = "Metal";
 
  function bodyLoad(){
     if (!sessionStorage.getItem("email"))
@@ -90,7 +90,9 @@ function createCarousel(classname) {
 
 $(document).ready(function () {
     createCarousel("carouselA");
-
+    console.log($(".slide-current");
+    $(".desc h2").text($(".slide-current h2").text());
+    $(".desc p").text($(".slide-current p").text());
 });
 
 $("#wizard").on("click",".next", function () {

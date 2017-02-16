@@ -168,6 +168,10 @@ main {
     transform: scale(0.8);
 }
 
+.slick-slide h2, .slick-slide p{
+    display: none;
+}
+
 .slick-center {
     -moz-transform: scale(1);
     -ms-transform: scale(1);

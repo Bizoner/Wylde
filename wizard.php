@@ -39,7 +39,7 @@
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselA">
                 <?php
-                        $query = "SELECT * from tbl_guitarParts_208 where type = 1";
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by topGenre='Metal' DESC";
                         $result = mysqli_query($connection, $query);
                         while ($row = $result->fetch_object()){
                             echo '<div>';
@@ -62,10 +62,17 @@
                 <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselB">
-                    <!--TODO INSERT PICKUP DATA HERE-->
-                    <img src="{{img}}">
-                    <H2>{{title}}</H2>
-                    <p>{{description}}</p>
+                    <?php
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 2 order by topGenre='Metal' DESC";
+                        $result = mysqli_query($connection, $query);
+                        while ($row = $result->fetch_object()){
+                            echo '<div>';
+                            echo '<img src=' . $row->img . '>';
+                            echo '<H2>' . $row->name . '</H2>';
+                            echo '<p>' . $row->description . '</p>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
                 <div class="desc">
                     <h2>Loading...</h2>
@@ -79,10 +86,17 @@
                 <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselC">
-                    <!--TODO INSERT PICKUP DATA HERE-->
-                    <img src="{{img}}">
-                    <H2>{{title}}</H2>
-                    <p>{{description}}</p>
+                    <?php
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 3 order by topGenre='Metal' DESC";
+                        $result = mysqli_query($connection, $query);
+                        while ($row = $result->fetch_object()){
+                            echo '<div>';
+                            echo '<img src=' . $row->img . '>';
+                            echo '<H2>' . $row->name . '</H2>';
+                            echo '<p>' . $row->description . '</p>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
                 <div class="desc">
                     <h2>Loading...</h2>
@@ -96,10 +110,17 @@
                 <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</h4>
                 <div class="carouselD">
-                    <!--TODO INSERT PICKUP DATA HERE-->
-                    <img src="{{img}}">
-                    <H2>{{title}}</H2>
-                    <p>{{description}}</p>
+                    <?php
+                        $query = "SELECT * from tbl_guitarParts_208 where type = 4 order by topGenre='Metal' DESC";
+                        $result = mysqli_query($connection, $query);
+                        while ($row = $result->fetch_object()){
+                            echo '<div>';
+                            echo '<img src=' . $row->img . '>';
+                            echo '<H2>' . $row->name . '</H2>';
+                            echo '<p>' . $row->description . '</p>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
                 <div class="desc">
                     <h2>Loading...</h2>

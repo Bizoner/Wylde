@@ -2,7 +2,7 @@
  * Created by gadyezra on 1/12/17. Edited by Eldad Corem on 16/02/2017
  */
 
- function bodyLoad(){
+/* function bodyLoad(){
     if (!sessionStorage.getItem("email"))
         window.location="index.html";
     else{
@@ -30,9 +30,11 @@ function callbackResponse(data){
         src = "url('" + sessionStorage.getItem("src") + "')";
         picture.style.background = src;
         usrName.innerHTML = sessionStorage.getItem("fullname");
-}
+}*/
 
 $(document).ready(function() {
+
+    sessionStorage.setItem("topGenre", "Metal");
 
     $.getJSON( "includes/json/bands.json", function( data ) {
         console.log( "JSON Data: " + data);
