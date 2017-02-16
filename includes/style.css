@@ -115,6 +115,10 @@ main {
     background-repeat: no-repeat;
 }
 
+#wizard{
+    visibility: hidden;
+}
+
 #wizard section:not(:first-of-type) {
     display: none;
 }
@@ -267,7 +271,6 @@ loginbox {
     border-radius: 50%;
     width:52px;
     height:52px;
-    background: url("../images/profileon.png");
     background-repeat: no-repeat;
     opacity:0.8;
 }

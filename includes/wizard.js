@@ -17,159 +17,34 @@ var step = 0;
 // 4. keep Iterator, clicking on right or left at carousel will trigger +1 in array
 // 5. text + right side will change accordingly
 
-var parts = [
-    [
-        {
-            "title": "Title1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Blues"
-        },
-        {
-            "title": "Title2",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Rock"
-        },
-        {
-            "title": "Title3",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Country"
-        },
-        {
-            "title": "Pickup1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/profile.png",
-            "price": "50",
-            "style": "Heavy Metal"
-        },
-        {
-            "title": "THIS ONE",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Classic"
-        }
-    ],
-    [
-        {
-            "title": "Title1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Blues"
-        },
-        {
-            "title": "Title2",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Rock"
-        },
-        {
-            "title": "Title3",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Country"
-        },
-        {
-            "title": "Body1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/profile.png",
-            "price": "50",
-            "style": "Heavy Metal"
-        },
-        {
-            "title": "THIS ONE",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Classic"
-        }
-    ],
-    [
-        {
-            "title": "Title1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Blues"
-        },
-        {
-            "title": "Title2",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Rock"
-        },
-        {
-            "title": "Title3",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Country"
-        },
-        {
-            "title": "Neck1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/profile.png",
-            "price": "50",
-            "style": "Heavy Metal"
-        },
-        {
-            "title": "THIS ONE",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Classic"
-        }
-    ],
-    [
-        {
-            "title": "Title1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Blues"
-        },
-        {
-            "title": "Title2",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Rock"
-        },
-        {
-            "title": "Title3",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Country"
-        },
-        {
-            "title": "Bridge1",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/profile.png",
-            "price": "50",
-            "style": "Heavy Metal"
-        },
-        {
-            "title": "THIS ONE",
-            "description": "lorem ipsum umut dolum kalif magdum insted of doom albit surum",
-            "img": "images/pickup.png",
-            "price": "50",
-            "style": "Classic"
-        }
-    ]
-];
+var parts = [];
 
 
 var bestStyle = "Heavy Metal";
+
+ function bodyLoad(){
+    if (!sessionStorage.getItem("email"))
+        window.location="index.html";
+    else{
+        $.ajax({
+               url: 'includes/call.php',
+               data: {'buildGuitar' : 'buildGuitar'},
+               type: 'post',
+               dataType: 'JSON',
+               success: function (response){
+                        console.log("Success");
+                        callbackResponse(response);
+                    },
+               error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr);}
+            });
+    }
+ }
+
+function callbackResponse(data){
+    //Here we'll update the pars[] data
+    console.log(data);
+    document.getElementById("wizard").style.visibility="visible";
+}
 
 function moveSelectedFirst(array) {
     var i = 0;

@@ -34,21 +34,45 @@
           Quisque gravida congue ipsum, id sodales mauris mattis sit amet.</p>
         <button>SIGN UP & START CREATING</button>
       </article>
+      <form action="analysis.html" method="get">
       <article class="thirdCol" id="loginbox">
       <h1>LOGIN</h1>
-        <input type="text" placeholder="USERNAME">
-        <input type="text" placeholder="PASSWORD">
-        <button>GET ME IN</button>
-        <a href="analysis.html"><button id="google"></button></a>
+        <input id="email" type="text" placeholder="USERNAME">
+        <input type="password" placeholder="PASSWORD">
+        <button type="submit">GET ME IN</button>
+        <a href="analysis.html"><button type="submit" id="google"></button></a>
+      </form>
     </article>
     </main>
-
     </div>
-  </body>
   <footer>
     <div class="container">
     <a href="#"><span>CONTACT US</span></a>
     <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
     </div>
   </footer>
+  <script>
+      var array = document.getElementsByTagName("button");
+      for (var i=0; i<array.length; i++)
+          array[i].addEventListener('click', putInStorage, false);
+
+      function putInStorage(e){
+          sessionStorage.setItem('email',document.getElementById("email").value);
+          console.log("Before ajax");
+           $.ajax({
+           url: 'includes/call.php',
+           data: {'login' : document.getElementById('email').value},
+           type: 'post',
+           success: function (response){console.log("Success");},
+           error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr);}
+        }).done(
+            function(data){
+                console.log(data);
+                var array = data;
+                console.log(array);
+                console.log("RETURNED!");
+            });
+      }
+  </script>
+  </body>
 </html>

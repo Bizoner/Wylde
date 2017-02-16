@@ -1,7 +1,36 @@
 /**
- * Created by gadyezra on 1/12/17.
+ * Created by gadyezra on 1/12/17. Edited by Eldad Corem on 16/02/2017
  */
 
+ function bodyLoad(){
+    if (!sessionStorage.getItem("email"))
+        window.location="index.html";
+    else{
+        $.ajax({
+               url: 'includes/call.php',
+               data: {'login' : sessionStorage.getItem('email')},
+               type: 'post',
+               success: function (response){
+                        console.log("Success");
+                        callbackResponse(response);
+                    },
+               error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr);}
+            });
+    }
+ }
+
+function callbackResponse(data){
+        var index = data.indexOf("$");
+        var fullname = data.substring(0, index);
+        var src = data.substring(index+1);
+        sessionStorage.setItem("fullname", fullname);
+        sessionStorage.setItem("src", src);
+        var picture = document.getElementById("profilePic");
+        var usrName = document.getElementById("profileName");
+        src = "url('" + sessionStorage.getItem("src") + "')";
+        picture.style.background = src;
+        usrName.innerHTML = sessionStorage.getItem("fullname");
+}
 
 $(document).ready(function() {
 

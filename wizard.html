@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="includes/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
 </head>
-<body>
+<body onLoad="bodyLoad()">
 <div class="container">
     <header>
         <div id="mySidenav" class="sidenav">
@@ -23,7 +23,7 @@
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
-            <a href="#" id="profileName">Yosi Tsaraf</a>
+            <a href="#" id="profileName"></a>
             <a href="#" id="profilePic"></a>
         </section>
         <a href="index.html" id="logo"></a>
@@ -116,7 +116,6 @@
     </main>
 
 </div>
-</body>
 <footer>
     <script src="includes/wizard.js"></script>
     <script src="includes/menu.js"></script>
@@ -127,4 +126,5 @@
         <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
     </div>
 </footer>
+</body>
 </html>
