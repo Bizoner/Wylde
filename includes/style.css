@@ -159,7 +159,7 @@ main {
     margin-top:0px;
 }
 
-.slick-slide {
+#wizard .slick-slide {
     opacity: 0.5;
     -moz-transform: scale(0.8);
     -ms-transform: scale(0.8);
@@ -168,11 +168,11 @@ main {
     transform: scale(0.8);
 }
 
-.slick-slide h2, .slick-slide p{
+#wizard.slick-slide h2, #wizard .slick-slide p{
     display: none;
 }
 
-.slick-center {
+#wizard .slick-center {
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
@@ -185,7 +185,7 @@ main {
     margin:0 auto;
 }
 
-.slick-slide[data-slick-index="0"] {
+#wizard .slick-slide[data-slick-index="0"] {
     background: url("../images/recomend.png");
     background-position:top right;
     background-repeat: no-repeat;
