@@ -62,6 +62,7 @@
 		$query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
 		$result = mysqli_query($connection, $query);
 		$row = $result->fetch_object();
+		echo '<span class="closePopup">X</span>';
 		echo '<h3>' . $row->creator . '</h3>';
 		echo '<h3>' . $row->created . '</h3>';
 		echo '<h3>' . $row->guitarName . '</h3>';
@@ -70,6 +71,8 @@
 		echo '<h3>' . $row->neck . '</h3>';
 		echo '<h3>' . $row->bridge . '</h3>';
 		echo '<h3>' . $row->price . '</h3>';
+		/*echo '<img src=' . $row->img . '>';*/
+		echo '<button>Order</button>&nbsp;&nbsp;&nbsp;<button>Share</Button>';
 	}
 
 ?>

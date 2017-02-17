@@ -52,7 +52,10 @@
             text-align: center;
         }
 
-        #lightbox h3{margin : 10px;}
+        #lightbox h3{margin : 5px;}
+        #lightbox img{transform: rotate(90deg); height : 100px;}
+        #lightbox .right{position : relative; float : right; width : 50%;}
+        #lightbox .left{position : relative; float : left; width : 50%;}
 
         .lbcontent {
             background: #282d3c;
