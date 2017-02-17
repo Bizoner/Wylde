@@ -23,7 +23,9 @@
             border-radius: 20px;
             margin: 4px 6px 0px 0px;
             border: white solid 1px;}
+
         .plusIcon {float: right;
+            text-align: center;
             color: #2c3241;
             font-size: 20px;
             font-weight: 400;
@@ -52,11 +54,6 @@
             text-align: center;
         }
 
-        #lightbox h3{margin : 5px;}
-        #lightbox img{transform: rotate(90deg); height : 100px;}
-        #lightbox .right{position : relative; float : right; width : 50%;}
-        #lightbox .left{position : relative; float : left; width : 50%;}
-
         .lbcontent {
             background: #282d3c;
             width: 40%;
@@ -68,6 +65,25 @@
             bottom: 0;
             right: 0;
             border-radius:20px;
+        }
+
+        .lbcontent h3{margin : 20px;}
+        .lbcontent img{margin : auto; height : 440px;}
+        .lbcontent .right{position : relative; float : right; width : 50%; display : inline-block;}
+        .lbcontent .left{position : relative; float : left; width : 50%; display : inline-block;}
+
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #ff0035;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin : auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -110,6 +126,7 @@
                     echo '<div>
                          <article>
                     <section class="guitar_top">
+                    <div class="status">Pending</div>
                     <div class="plusIcon">+</div>
                     </section>';
                     echo '<img src=' . $row->img . '>';
@@ -123,7 +140,7 @@
         </div>
         <div id="lightbox">
             <div class="lbcontent">
-
+                <div class="loader"></div>
             </div>
         </div>
     </main>
