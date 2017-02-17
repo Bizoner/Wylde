@@ -63,21 +63,20 @@
 		$query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
 		$result = mysqli_query($connection, $query);
 		$row = $result->fetch_object();
-		echo '<span class="closePopup">X</span>';
-		echo '<div class="left">';
-		echo '<img src=' . $row->img .'>';
+		echo '<div class="twothirdCol" id="builder">';
+		echo '<h2>' . $row ->guitarName . '</h2>';
+        echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->pickup . '</div><div class="item_price"></div></div>';
+        echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->body . '</div><div class="item_price"></div></div>';
+        echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->neck . '</div><div class="item_price"></div></div>';
+        echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->bridge . '</div><div class="item_price"></div></div>';
+        echo '<p>CREATED BY: ' . $row->creator . '</p>';
+        echo '<p>PRICE: ' . $row->price . '$</p>';
+        echo '<button class="share">SHARE</button>&nbsp;&nbsp;&nbsp;<button class="order">ORDER</Button>';
 		echo '</div>';
-		echo '<div class="right">';
-		echo '<h3>' . $row->creator . '</h3>';
-		echo '<h3>' . $row->created . '</h3>';
-		echo '<h3>' . $row->guitarName . '</h3>';
-		echo '<h3>' . $row->pickup . '</h3>';
-		echo '<h3>' . $row->body . '</h3>';
-		echo '<h3>' . $row->neck . '</h3>';
-		echo '<h3>' . $row->bridge . '</h3>';
-		echo '<h3>' . $row->price . '</h3>';
-		echo '</div>';
-		echo '<button class="order">Order</button>&nbsp;&nbsp;&nbsp;<button class="share">Share</Button>';
+        echo '<div class="thirdCol">';
+        echo '<span class="closePopup">X</span>';
+        echo '<img src=' . $row->img .'>';
+        echo '</div>';
 	}
 
 	if (isset($_POST['orderGuitar'])){

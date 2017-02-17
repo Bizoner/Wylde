@@ -12,9 +12,10 @@
     <script src="includes/jquery.easing.min.js"></script>
     <script src="includes/explore.js"></script>
     <style>
-        #explore {margin-top:3%;}
+        #myguitars {margin-top:3%;}
         .exploreCarousel img {height:350px;}
         .status {float:left;}
+        #myguitars .thirdCol {margin-top:15%;}
         .dot {
             float: left;
             width: 10px;
@@ -35,7 +36,7 @@
             border-radius: 100%;
         }
         .guitar_top{height:30px; padding:10px;}
-        article {width: 80%;
+        article article {width: 80%;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.14);
             border-radius: 15px;}
@@ -56,55 +57,44 @@
 
         .lbcontent {
             background: #282d3c;
-            text-align:left;
             width: 40%;
             height: 450px;
             margin: auto;
             position: absolute;
-            padding: 15px;
-            border: white 1px solid;
             top: 0;
             left: 0;
             bottom: 0;
             right: 0;
             border-radius:20px;
         }
-        .lbcontent .thirdCol{text-align:center;}
+
+        .lbcontent h3{margin : 20px;}
         .lbcontent img{margin : auto; height : 400px;}
-        .lbcontent p {padding: 7px 0px;}
-        .lbcontent h2 {margin-bottom:20px;}
         .lbcontent .right{position : relative; float : right; width : 50%; display : inline-block;}
         .lbcontent .left{position : relative; float : left; width : 50%; display : inline-block;}
         .loader {
             border: 16px solid #f3f3f3; /* Light grey */
             border-top: 16px solid #ff0035;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 120px;
+            height: 120px;
             animation: spin 2s linear infinite;
-            margin : 33% auto;
+            margin : auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        .share {
-            background: #404451;
-        }
-        .share:hover {
-            background: #747d99;
-        }
     </style>
 </head>
 <body>
 <?php
-    include('includes/dbConnection.php');
-    if (isset($_POST['topGenre']))
-        $topGenre = $_POST['topGenre'];
-    else
-        $topGenre = 'Metal';
-    $email = "yossit@gmail.com";
+include('includes/dbConnection.php');
+if (isset($_POST['topGenre']))
+    $topGenre = $_POST['topGenre'];
+else
+    $topGenre = 'Metal';
+$email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -124,18 +114,24 @@
         </section>
         <a href="index.html" id="logo"></a>
     </header>
-    <main id="explore">
-        <h1>Explore our catalog...</h1>
-        <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
-            Etiam sed dignissim odio.</h4>
-        <div class="exploreCarousel">
-            <?php
+    <main id="myguitars">
+        <article class="thirdCol">
+            <h1>YOUR GUITARS</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
+                Etiam sed dignissim odio.</p>
+            <button class="submit">Build a New Guitar</button>
+        </article>
+        <article class="twothirdCol">
+            <div class="exploreCarousel">
+                <?php
                 $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
                 $result = mysqli_query($connection, $query);
                 while ($row = $result->fetch_object()){
                     echo '<div>
                          <article>
                     <section class="guitar_top">
+                    <div class="dot"></div>
+                    <div class="status">Pending</div>
                     <div class="plusIcon">+</div>
                     </section>';
                     echo '<img src=' . $row->img . '>';
@@ -144,14 +140,15 @@
                     echo '</article>
                           </div>';
                 }
-            ?>
+                ?>
 
-        </div>
-        <div id="lightbox">
-            <div class="lbcontent">
-                <div class="loader"></div>
             </div>
-        </div>
+            <div id="lightbox">
+                <div class="lbcontent">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </article>
     </main>
 
 </div>
@@ -168,7 +165,7 @@
                 dots: true,
                 infinite: true,
                 speed: 300,
-                slidesToShow: 5,
+                slidesToShow: 3,
                 slidesToScroll: 1,
                 autoplay: false,
                 autoplaySpeed: 3000,
@@ -206,8 +203,8 @@
 </footer>
 </body>
 <?php
-    if ($result!=null)
-        mysqli_free_result($result);
-    mysqli_close($connection);
+if ($result!=null)
+    mysqli_free_result($result);
+mysqli_close($connection);
 ?>
 </html>
