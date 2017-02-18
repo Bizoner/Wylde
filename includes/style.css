@@ -251,6 +251,7 @@ main {
     margin-top:15px;
     background-image:url(../images/google.jpg);
     height:47px;
+    width : 285px;
 }
 
 #headright {
@@ -505,6 +506,12 @@ main {
 #artists {
     margin-top:30px;
     height:160px;
+}
+
+#artists p{
+    text-align: center;
+    font-size : 22px;
+    font-weight: bold;
 }
 
 .artist {

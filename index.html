@@ -32,7 +32,9 @@
           Etiam sed dignissim odio. Fusce eleifend viverra tellus,</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed dignissim odio.Fusce eleifend viverra tellus, a suscipit arcu sodales eu. Nullam semper eget ex et egestas. Quisque arcu augue, fringilla id purus vel, pulvinar tempus urna. Sed auctor euismod placerat. Proin dictum gravida purus, at vehicula felis faucibus eget. Sed sagittis vel massa quis congue.
           Quisque gravida congue ipsum, id sodales mauris mattis sit amet.</p>
-        <button>SIGN UP & START CREATING</button>
+        <form action="manuallogin.php" method="post">
+            <button type="submit" id="google"></button>
+        </form>
       </article>
       <form action="analysis.php" method="post">
       <article class="thirdCol">
@@ -41,7 +43,6 @@
         <input id="email" name="email" type="text" placeholder="USERNAME">
         <input type="password" name="password" placeholder="PASSWORD">
         <button type="submit">GET ME IN</button>
-        <button type="submit" id="google"></button></a>
         </section>
       </form>
     </article>
@@ -57,7 +58,6 @@
       var array = document.getElementsByTagName("button");
       for (var i=0; i<array.length; i++)
           array[i].addEventListener('click', putInStorage, false);
-
       function putInStorage(e){
           sessionStorage.setItem('email',document.getElementById("email").value);
       }
