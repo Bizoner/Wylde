@@ -25,14 +25,6 @@
 ?>
 <div class="container">
     <header>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
-        <a href="#" id="menuicon" onclick="openNav()"></a>
         <?php
             if(isset($_POST['email'])){
                 echo '<section id="headright">

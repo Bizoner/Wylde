@@ -79,6 +79,7 @@ function createCarousel(classname) {
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
         $(".item_price").eq(step).text($(".slick-current article").text());
+        $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
         else 
@@ -89,6 +90,7 @@ function createCarousel(classname) {
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
         $(".item_price").eq(step).text($(".slick-current article").text());
+        $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
         else 
@@ -98,6 +100,7 @@ function createCarousel(classname) {
     $(".desc p").eq(step).text($(".slick-current p").text());
     $(".item_title").eq(step).text($(".slick-current h2").text());
     $(".item_price").eq(step).text($(".slick-current article").text());
+    $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
     recommended = $(".slick-current h2").text();
 };
 

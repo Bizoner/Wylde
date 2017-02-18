@@ -109,16 +109,6 @@
 ?>
 <div class="container">
     <header>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="index.html">Home</a>
-            <a href="wizard.html">Build a Guitar</a>
-            <a href="#">Explore</a>
-            <a href="#">Contact Us</a>
-            <a href="#">My Profile</a>
-            <a href="#">Logout</a>
-        </div>
-        <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
             <a href="#" id="profileName">Yossi Tsaraf</a>
             <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
