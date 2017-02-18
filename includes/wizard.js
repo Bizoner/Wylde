@@ -112,7 +112,7 @@ $(document).ready(function () {
         buttons = document.getElementsByClassName('next');
         lucky=true;
         var i=0;
-        var looper = setInterval(function(){ 
+        var looper = setInterval(function(){
             if (i<4){
                 buttons[i].click();
                 i++;
@@ -121,6 +121,11 @@ $(document).ready(function () {
                 clearInterval(looper);
         }, 0);
     }
+    else {
+        $(".backmobile").css("display","none!important");
+        $("#finishmobile").css("display","none!important");
+    }
+
 });
 
 $("#wizard").on("click", ".finish", function(){

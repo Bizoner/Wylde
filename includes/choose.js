@@ -22,7 +22,7 @@ function hiddenForm(e){
     newInput.value = sessionStorage.setItem("email", "yossit@gmail.com");
   console.log(sessionStorage.getItem("email"));
   theForm.appendChild(newInput);
-  if ((e.target == document.getElementById("selection").childNodes[3].childNodes[1]) || (e.target==document.getElementById("selection").childNodes[3].childNodes[3])){
+  if ((e.target == document.getElementById("selection").childNodes[1].childNodes[1]) || (e.target==document.getElementById("selection").childNodes[1].childNodes[3])){
     sessionStorage.setItem("lucky", true);
     newInput = document.createElement('input');
     newInput.type = 'hidden';

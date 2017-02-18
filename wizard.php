@@ -202,6 +202,8 @@
                     <p>Total: 0$</p>
                 </div>
             </section>
+            <a href="analysis.php"><button class="backmobile">BACK</button></a>
+            <button class="finish" id="finishmobile">FINISH</button>
         </article>
         <div id="popup" class="popup">
             <span class="closePopup">X</span>
