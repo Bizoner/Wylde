@@ -48,7 +48,7 @@
 		$created = $_POST['created'];
 		$query = "INSERT INTO tbl_guitars_208 VALUES ('$guitarName','$email','$private', '$pickup', '$body', '$neck', '$bridge', '$price', '$img', '$created');
 				  INSERT INTO tbl_userOrders_208 VALUES ('$email', '$guitarName', '$price', 'Pending')";
-		if(!($temp = mysqli_multi_query ($connection, $query)))
+		if(!($result = mysqli_multi_query ($connection, $query)))
 			echo "Update Failed ";
 		else
 			echo "success";
@@ -58,9 +58,9 @@
 	}
 
 	if (isset($_POST['showGuitar'])){
-		$name = $_POST['name'];
+		$guitarName = $_POST['guitarName'];
 		$creator = $_POST['creator'];
-		$query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
+		$query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$guitarName'";
 		$result = mysqli_query($connection, $query);
 		$row = $result->fetch_object();
 		echo '<div class="twothirdCol" id="builder">';
@@ -80,24 +80,33 @@
 	}
 
 	if (isset($_POST['orderGuitar'])){
-		$name = $_POST['name'];
+		$guitarName = $_POST['guitarName'];
 		$creator = $_POST['creator'];
-		$query = "UPDATE tbl_userOrders_208 SET status = 'Ordered' WHERE user = '$creator' AND guitarName = '$name'";
-		if(!($temp = mysqli_multi_query ($connection, $query)))
+		if (isset($_POST['price']))
+			$price = $_POST['price'];
+		$query = "SELECT * FROM tbl_userOrders_208 WHERE user = '$creator' AND guitarName = '$guitarName'";
+		$result = mysqli_query($connection, $query);
+		if((mysqli_num_rows($result)==1))
+			$query = "UPDATE tbl_userOrders_208 SET status = 'Ordered' WHERE user = '$creator' AND guitarName = '$guitarName'";
+		else
+			$query = "INSERT INTO tbl_userOrders_208 VALUES ('$creator', '$guitarName', '$price', 'Ordered')";	
+		if(!($result = mysqli_query ($connection, $query)))
 			echo "Update Failed ";
 		else
 			echo "success";
-		if ($result!=null)
-			mysqli_free_result($result);
 		mysqli_close($connection);
 	}
 
 	if (isset($_POST['mailto'])){
 		$link = $_POST['link'];
 		$mailto = $_POST['mailto'];
-		$headers = "From: yossit@gmail.com\r\n";
-		$headers .= "Content-type: text/html\r\n";
+		$headers = "From: yossit@gmail.com";
+		$headers .= "Content-type: text/html";
 		$success = mail($mailto, "Come edit my guitar!", "Yossi Tsaraf has shared this guitar with you!", $headers);
+		if ($success)
+			echo 'success';
+		else
+			echo 'failed';
 	}
 
 ?>

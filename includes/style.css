@@ -168,7 +168,7 @@ main {
     transform: scale(0.8);
 }
 
-#wizard.slick-slide h2, #wizard .slick-slide p{
+#wizard.slick-slide h2, #wizard .slick-slide p, #wizard .slick-slide article{
     display: none;
 }
 

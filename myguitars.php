@@ -89,12 +89,12 @@
 </head>
 <body>
 <?php
-include('includes/dbConnection.php');
-if (isset($_POST['topGenre']))
-    $topGenre = $_POST['topGenre'];
-else
-    $topGenre = 'Metal';
-$email = "yossit@gmail.com";
+    include('includes/dbConnection.php');
+    if (isset($_POST['topGenre']))
+        $topGenre = $_POST['topGenre'];
+    else
+        $topGenre = 'Metal';
+    $email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -109,8 +109,8 @@ $email = "yossit@gmail.com";
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
-            <a href="#" id="profileName"></a>
-            <a href="#" id="profilePic"></a>
+            <a href="#" id="profileName">Yossi Tsaraf</a>
+            <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
         </section>
         <a href="index.html" id="logo"></a>
     </header>
@@ -124,21 +124,23 @@ $email = "yossit@gmail.com";
         <article class="twothirdCol">
             <div class="exploreCarousel">
                 <?php
-                $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
+                $query = "SELECT DISTINCT tbl_guitars_208.guitarName, tbl_userOrders_208.guitarName,creator,created,img,tbl_userOrders_208.price,tbl_userOrders_208.status from tbl_guitars_208 JOIN tbl_userOrders_208 WHERE creator = '$email' AND tbl_userOrders_208.guitarName=tbl_guitars_208.guitarName ORDER BY created DESC"; 
                 $result = mysqli_query($connection, $query);
                 while ($row = $result->fetch_object()){
                     echo '<div>
                          <article>
-                    <section class="guitar_top">
-                    <div class="dot"></div>
-                    <div class="status">Pending</div>
-                    <div class="plusIcon">+</div>
-                    </section>';
-                    echo '<img src=' . $row->img . '>';
-                    echo '<h3>' . $row->guitarName . '</h3>';
-                    echo '<p>' . $row->created . '</p>';
-                    echo '</article>
-                          </div>';
+                        <section class="guitar_top">
+                        <div class="dot"></div>
+                        <div class="status">' . $row->status . '</div>
+                        <div class="plusIcon">+</div>
+                        </section>
+                        <img src=' . $row->img . '>
+                        <h3>' . $row->guitarName . '</h3>
+                        <h3 class="hidden">' . $row->creator . '</h3>
+                        <p>' . $row->price . '</p>
+                        <p>' . $row->created . '</p>
+                        </article>
+                        </div>';
                 }
                 ?>
 

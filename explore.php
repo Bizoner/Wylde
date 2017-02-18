@@ -12,6 +12,7 @@
     <script src="includes/jquery.easing.min.js"></script>
     <script src="includes/explore.js"></script>
     <style>
+        .hidden{display: none;}
         #explore {margin-top:3%;}
         .exploreCarousel img {height:350px;}
         .status {float:left;}
@@ -119,8 +120,8 @@
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
-            <a href="#" id="profileName"></a>
-            <a href="#" id="profilePic"></a>
+            <a href="#" id="profileName">Yossi Tsaraf</a>
+            <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
         </section>
         <a href="index.html" id="logo"></a>
     </header>
@@ -139,7 +140,9 @@
                     <div class="plusIcon">+</div>
                     </section>';
                     echo '<img src=' . $row->img . '>';
-                    echo '<h3>' . $row->guitarName . '</h3>';
+                    echo '<h3 class="guitarName">' . $row->guitarName . '</h3>';
+                    echo '<h3 class="hidden">' . $row->creator . '</h3>';
+                    echo '<p>' . $row->price . '</p>';
                     echo '<p>' . $row->created . '</p>';
                     echo '</article>
                           </div>';

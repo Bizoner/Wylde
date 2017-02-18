@@ -9,15 +9,10 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var iterator = 0;
 var step = 0;
-var pickup;
-var body;
-var neck;
-var bridge;
-var email;
 var private = 1;
-var name;
-var price = 1200;
-
+var name, Duration, email, bridge,neck,body,pickup,recommended;
+var lucky = false;
+var price = 0;
 // TODO CAROUSEL LOGIC:
 // 1. Get all current parts to array of part name
 // 2. Sort array according to taste
@@ -28,6 +23,10 @@ var price = 1200;
 
 var bestStyle = "Metal";
 var email = "yossit@gmail.com";
+
+function calculate(){
+    price+=parseFloat($(".item_price").eq(step-1).text());
+}
 
 function moveSelectedFirst(array) {
     var i = 0;
@@ -44,8 +43,12 @@ function moveSelectedFirst(array) {
     return array;
 };
 
+function deleteCarousel(classname){
+    document.getElementsByClassName(classname)[0].remove();
+}
 
 function createCarousel(classname) {
+    $(".desc h5").css("display", "block");
     $("." + classname).slick({
         centerMode: true,
         centerPadding: '30px',
@@ -71,12 +74,53 @@ function createCarousel(classname) {
             }
         ]
     });
+    $(".slick-next").click(function (){   
+        $(".desc h2").eq(step).text($(".slick-current h2").text());
+        $(".desc p").eq(step).text($(".slick-current p").text());
+        $(".item_title").eq(step).text($(".slick-current h2").text());
+        $(".item_price").eq(step).text($(".slick-current article").text());
+        if ($(".slick-current h2").text() == recommended)
+            $(".desc h5").css("display", "block");
+        else 
+            $(".desc h5").css("display", "none");
+    });
+    $(".slick-prev").click(function (){
+        $(".desc h2").eq(step).text($(".slick-current h2").text());
+        $(".desc p").eq(step).text($(".slick-current p").text());
+        $(".item_title").eq(step).text($(".slick-current h2").text());
+        $(".item_price").eq(step).text($(".slick-current article").text());
+        if ($(".slick-current h2").text() == recommended)
+            $(".desc h5").css("display", "block");
+        else 
+            $(".desc h5").css("display", "none");
+    });
+    $(".desc h2").eq(step).text($(".slick-current h2").text());
+    $(".desc p").eq(step).text($(".slick-current p").text());
+    $(".item_title").eq(step).text($(".slick-current h2").text());
+    $(".item_price").eq(step).text($(".slick-current article").text());
+    recommended = $(".slick-current h2").text();
 };
 
 $(document).ready(function () {
     createCarousel("carouselA");
     $(".desc h2").text($(".slick-current h2").text());
     $(".desc p").text($(".slick-current p").text());
+    $(".item_title").text($(".slick-current h2").text());
+    $(".item_price").text($(".slick-current article").text());
+    if (sessionStorage.getItem("lucky")=='true'){
+        sessionStorage.setItem("lucky", false);
+        buttons = document.getElementsByClassName('next');
+        lucky=true;
+        var i=0;
+        var looper = setInterval(function(){ 
+            if (i<4){
+                buttons[i].click();
+                i++;
+            }
+            else
+                clearInterval(looper);
+        }, 0);
+    }
 });
 
 $("#wizard").on("click", ".finish", function(){
@@ -102,6 +146,8 @@ $("#wizard").on("click", ".submit", function(){
     if(mm<10){
         mm='0'+mm;
     } 
+    
+            console.log(pickup + " " + body + " " + neck + " " + bridge);
     var today = dd+'/'+mm+'/'+yyyy;
     $.ajax({
         url: 'includes/call.php',
@@ -120,6 +166,12 @@ $("#wizard").on("click", ".closePopup", function(){
 });
 
 $("#wizard").on("click",".next", function () {
+    if (lucky){
+        Duration = 0;
+        animating=false;
+    }
+    else
+        Duration = 800;
     if (animating) return false;
     animating = true;
 
@@ -148,7 +200,7 @@ $("#wizard").on("click",".next", function () {
             });
             next_fs.css({'left': left, 'opacity': opacity});
         },
-        duration: 800,
+        duration: Duration,
         complete: function () {
             current_fs.hide();
             animating = false;
@@ -160,42 +212,41 @@ $("#wizard").on("click",".next", function () {
     var current_title = $(".desc h2").html();
 
     if (step<4) {
-        $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title">' + current_title + '</div><div class="item_price">438$</div></div>');
+        $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title"></div><div class="item_price"></div></div>');
     }
 
 
     switch (step) {
         case 1:{
-            pickup = $(".desc h2").text();
-            createCarousel("carouselB");            
-            $(".desc h2").text($(".slick-current h2").text());
-            $(".desc p").text($(".slick-current p").text());
+            pickup = $(".slick-current h2").text();
+            deleteCarousel("carouselA");   
+            createCarousel("carouselB");
             break;
         }
         case 2:{
-            body = $(".desc h2").text();
+            body = $(".slick-current h2").text();
+            deleteCarousel("carouselB"); 
             createCarousel("carouselC");
-            $(".desc h2").text($(".slick-current h2").text());
-            $(".desc p").text($(".slick-current p").text());
             break;
         }
         case 3:{
-            neck = $(".desc h2").text();
+            neck = $(".slick-current h2").text();
+            deleteCarousel("carouselC"); 
             createCarousel("carouselD");
-            $(".desc h2").text($(".slick-current h2").text());
-            $(".desc p").text($(".slick-current p").text());
             break;
         }
         case 4:{
-            bridge = $(".desc h2").text();
+            bridge = $(".slick-current h2").text();
             break;
         }
     }
-
+    calculate();
+    $(".item_total p").text("Total: " + price + "$");
 });
 
 
 $(".previous").click(function () {
+    Duration = 800;
     if (animating) return false;
     animating = true;
 
@@ -217,7 +268,7 @@ $(".previous").click(function () {
             current_fs.css({'left': left});
             previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
         },
-        duration: 800,
+        duration: Duration,
         complete: function () {
             current_fs.hide();
             animating = false;

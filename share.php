@@ -108,12 +108,12 @@
 </head>
 <body>
 <?php
-include('includes/dbConnection.php');
-if (isset($_POST['topGenre']))
-    $topGenre = $_POST['topGenre'];
-else
-    $topGenre = 'Metal';
-$email = "yossit@gmail.com";
+    include('includes/dbConnection.php');
+    if (isset($_POST['topGenre']))
+        $topGenre = $_POST['topGenre'];
+    else
+        $topGenre = 'Metal';
+    $email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -128,21 +128,23 @@ $email = "yossit@gmail.com";
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
         <section id="headright">
-            <a href="#" id="profileName"></a>
+            <a href="#" id="profileName">Shlomi Ezra</a>
             <a href="#" id="profilePic"></a>
         </section>
         <a href="index.html" id="logo"></a>
     </header>
     <main id="share">
-        <article class="thirdCol">
-            <h1>SHLOMI HAS SHARED "WYLDER"</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
-                Etiam sed dignissim odio.</p>
-            <button class="share">EDIT</button>&nbsp;&nbsp;&nbsp;<button class="order">HI-FIVE!</Button>
-        </article>
+        <?php
+            echo '<article class="thirdCol">
+                <h1>YOSSI HAS SHARED "' . $_GET['guitarName'] . '"</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
+                    Etiam sed dignissim odio.</p>
+                <button class="edit">EDIT</button>&nbsp;&nbsp;&nbsp;<button class="reply">HI-FIVE!</Button>
+            </article>';
+        ?>
         <article class="twothirdCol">
                     <?php
-                    $name = $_GET['name'];
+                    $name = $_GET['guitarName'];
                     $creator = $_GET['creator'];
                     $query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
                     $result = mysqli_query($connection, $query);
