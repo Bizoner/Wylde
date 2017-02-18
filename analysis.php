@@ -9,6 +9,20 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
 </head>
 <body>
+<?php
+    include('includes/dbConnection.php');
+    if (isset($_POST['email'])){
+        $firstName = "Mr.";
+        $lastName = "Jones";
+        $img = "imgaes/profile.png";
+        $email = $_POST['email'];
+        if ($email=="")
+            $email = "yossit@gmail.com";
+        $password = $_POST['password'];
+        $query = "INSERT INTO tbl_users_208 VALUES ('$firstName','$lastName','$email', '$password', null,null,null,null,null,'$img')";
+        mysqli_query ($connection, $query);
+    }
+?>
 <div class="container">
     <header>
         <div id="mySidenav" class="sidenav">
@@ -19,10 +33,21 @@
             <a href="#">Contact</a>
         </div>
         <a href="#" id="menuicon" onclick="openNav()"></a>
-        <section id="headright">
-            <a href="#" id="profileName">Yossi Tsaraf</a>
-            <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
-        </section>
+        <?php
+            if(isset($_POST['email'])){
+                echo '<section id="headright">
+                    <a href="#" id="profileName">' . $firstName . " " . $lastName , '</a>
+                    <p id=hidden>' . $email . '</p>
+                    <a href="#" id="profilePic"><img src="images/profile.png"></a>
+                </section>';
+            }
+            else
+                echo '<section id="headright">
+                    <a href="#" id="profileName">Yossi Tsaraf</a>
+                    <p id=hidden>yossit@gmail.com</p>
+                    <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
+                </section>';
+        ?>
         <a href="index.html" id="logo"></a>
     </header>
 
@@ -47,5 +72,9 @@
         <script src="includes/analysis.js"></script>
     </div>
 </footer>
+<script>sessionStorage.setItem("email", document.getElementById("hidden").innerHTML);console.log(sessionStorage.getItem("email"));</script>
 </body>
+<?php
+    mysqli_close($connection);
+?>
 </html>

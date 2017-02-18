@@ -12,10 +12,12 @@
 <body>
 <?php
     include('includes/dbConnection.php');
-    if (isset($_POST['topGenre']))
-        $topGenre = $_POST['topGenre'];
-    else
-        $topGenre = 'Metal';
+    if (isset($_POST['email']))
+        $email = $_POST['email'];
+    $query = "SELECT firstGenre from tbl_users_208 WHERE email = '$email'";
+    $result = mysqli_query($connection, $query);
+    $row = $result->fetch_object();
+    $topGenre = $row->firstGenre;
     if (isset($_POST['edit'])){
         $pickup = $_POST['pickup'];
         $body = $_POST['body'];

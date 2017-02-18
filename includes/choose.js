@@ -13,23 +13,22 @@ function hiddenForm(e){
   theForm = document.createElement('form');
   theForm.action = 'wizard.php';
   theForm.method = 'post';
-  newInput1 = document.createElement('input');
-  newInput1.type = 'hidden';
-  newInput1.name = 'topGenre';
-  if (sessionStorage.getItem("topGenre")!=null)
-  	newInput1.value = sessionStorage.getItem("topGenre");
-  else{
-  	newInput1.value = "Metal";
-  }
-  theForm.appendChild(newInput1);
+  newInput = document.createElement('input');
+  newInput.type = 'hidden';
+  newInput.name = 'email';
+  if (sessionStorage.getItem("email")!=null)
+    newInput.value = sessionStorage.getItem("email");
+  else
+    newInput.value = sessionStorage.setItem("email", "yossit@gmail.com");
+  console.log(sessionStorage.getItem("email"));
+  theForm.appendChild(newInput);
   if ((e.target == document.getElementById("selection").childNodes[3].childNodes[1]) || (e.target==document.getElementById("selection").childNodes[3].childNodes[3])){
     sessionStorage.setItem("lucky", true);
-    console.log("lucky");
-    newInput1 = document.createElement('input');
-    newInput1.type = 'hidden';
-    newInput1.name = 'lucky';
-    newInput1.value = true;
-    theForm.appendChild(newInput1);
+    newInput = document.createElement('input');
+    newInput.type = 'hidden';
+    newInput.name = 'lucky';
+    newInput.value = true;
+    theForm.appendChild(newInput);
   }
   else
       sessionStorage.setItem("lucky", false);

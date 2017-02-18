@@ -35,6 +35,20 @@
 		mysqli_close($connection);
 	}
 
+	if (isset($_POST['updateGenres'])){
+		$email = $_POST['email'];
+		$firstGenre = $_POST['firstGenre'];
+		$secondGenre = $_POST['secondGenre'];
+		$thirdGenre = $_POST['thirdGenre'];
+		$fourthGenre = $_POST['fourthGenre'];
+		$fifthGenre = $_POST['fifthGenre'];
+		$query = "UPDATE tbl_users_208 SET firstGenre = '$firstGenre', secondGenre = '$secondGenre', thirdGenre = '$thirdGenre', fourthGenre = '$fourthGenre', fifthGenre = '$fifthGenre' WHERE email = '$email'";
+		$result = mysqli_query($connection, $query);
+		if ($result!=null)
+			mysqli_free_result($result);
+		mysqli_close($connection);
+	}
+
 	if (isset($_POST['insertGuitar'])){
 		$guitarName = $_POST['name'];
 		$pickup = $_POST['pickup'];
@@ -108,5 +122,5 @@
 		else
 			echo 'failed';
 	}
-
+	mysqli_close($connection);
 ?>
