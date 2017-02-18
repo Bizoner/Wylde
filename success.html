@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
     <script src="includes/jquery-3.1.1.min.js"></script>
+    <script src="includes/menu.js"></script>
+    <srcipt src="includes/success.js"></srcipt>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="includes/slick/slick-theme.css"/>
 </head>
@@ -34,9 +36,9 @@
 
         </article>
     </main>
-
 </div>
-<script src="includes/menu.js"></script>
+<script>$("#guitar_pic").css("background","url("+sessionStorage.getItem("src")+")");
+        console.log(sessionStorage.getItem("src"));</script>
 </body>
 <footer>
     <div class="container">

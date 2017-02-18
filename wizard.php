@@ -200,7 +200,6 @@
         <div id="popup" class="popup">
             <span class="closePopup">X</span>
             <label>Name your guitar &nbsp;<input class="guitarName" type="text" name="guitarName" placeholder="Guitar name"></label>
-            <img src="images/guitar.png">
             <label>public?<input class="public" type="checkbox" name="public"></label>
             <button class="submit">Finish</button>
         </div>

@@ -10,7 +10,7 @@ var animating; //flag to prevent quick multi-click glitches
 var iterator = 0;
 var step = 0;
 var private = 1;
-var name, Duration, email, bridge,neck,body,pickup,recommended;
+var name, Duration, email, bridge,neck,body,pickup,recommended, final;
 var lucky = false;
 var price = 0;
 // TODO CAROUSEL LOGIC:
@@ -140,10 +140,12 @@ $("#wizard").on("click", ".submit", function(){
     name = document.getElementsByClassName("guitarName")[0].value;
     if (name=="")
         name = "myGuitar";
-    var src = "images/guitarup.png";
+    var src = "images/guitar_"+final.substring(0, final.length-4) + "_up.png";
     if (document.getElementsByClassName("public")[0].checked)
         private = 0;
     var today = new Date();
+    var link = "images/guitar_" + final;
+    sessionStorage.setItem("src", link);
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
 
@@ -162,7 +164,7 @@ $("#wizard").on("click", ".submit", function(){
        data: {'insertGuitar' : 'insertGuitar','name' : name, 'email' : email, 'pickup' : pickup, 'neck' : neck,
               'body' : body, 'bridge' : bridge, 'private' : private, 'price' : price, 'img' : src, 'created' : today},
        type: 'post',
-       success: function (response){console.log("Success"); window.location = 'success.html'},
+       success: function (response){console.log("Success");console.log(sessionStorage.getItem("src")); window.location = 'success.html'},
        error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}
     });
 });
@@ -233,8 +235,10 @@ $("#wizard").on("click",".next", function () {
         }
         case 2:{
             body = $(".slick-current h2").text();
+            final = $(".slick-current img").attr("src").substring(12);
             deleteCarousel("carouselB"); 
             createCarousel("carouselC");
+
             break;
         }
         case 3:{
@@ -245,6 +249,7 @@ $("#wizard").on("click",".next", function () {
         }
         case 4:{
             bridge = $(".slick-current h2").text();
+            $("#guitar_pic").css("background","url(images/guitar_"+final+")");
             break;
         }
     }

@@ -122,5 +122,4 @@
 		else
 			echo 'failed';
 	}
-	mysqli_close($connection);
 ?>
