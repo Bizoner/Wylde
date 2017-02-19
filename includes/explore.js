@@ -1,6 +1,7 @@
 var guitarName,creator,price;
 
 $(document).ready(function () {
+
     var array = document.getElementsByClassName("plusIcon");
     for (var i=0; i<array.length; i++)
         array[i].addEventListener('click', show, false);

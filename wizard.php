@@ -199,9 +199,9 @@
         </article>
         <div id="popup" class="popup">
             <span class="closePopup">X</span>
-            <label>Name your guitar &nbsp;<input class="guitarName" type="text" name="guitarName" placeholder="Guitar name"></label>
-            <label>public?<input class="public" type="checkbox" name="public"></label>
-            <button class="submit">Finish</button>
+            <label>Name your guitar: &nbsp;<input class="guitarName" type="text" name="guitarName" placeholder="Guitar name"></label>
+            <label>I Want to share my Guitar: <input class="public" type="checkbox" name="public"></label>
+            <button class="submit">FINISH</button>
         </div>
     </main>
 

@@ -11,92 +11,7 @@
     <script type="text/javascript" src="includes/slick/slick.min.js"></script>
     <script src="includes/jquery.easing.min.js"></script>
     <script src="includes/explore.js"></script>
-    <style>
-        .hidden{display: none;}
-        #explore {margin-top:3%;}
-        .exploreCarousel img {height:350px;}
-        .status {float:left;}
-        .dot {
-            float: left;
-            width: 10px;
-            height: 10px;
-            background: green;
-            border-radius: 20px;
-            margin: 4px 6px 0px 0px;
-            border: white solid 1px;}
 
-        .plusIcon {float: right;
-            text-align: center;
-            color: #2c3241;
-            font-size: 20px;
-            font-weight: 400;
-            background: rgba(255, 255, 255, 0.33);
-            /* height: 20px; */
-            width: 23px;
-            border-radius: 100%;
-        }
-        .guitar_top{height:30px; padding:10px;}
-        article {width: 80%;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.14);
-            border-radius: 15px;}
-        .exploreCarousel{margin-top:20px;}
-        .exploreCarousel h3, .exploreCarousel p {margin-bottom:0; padding:10px; text-align:center;}
-        #explore .slick-dots {bottom:-50px;}
-        #lightbox {
-            display:none;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 999999;
-            background: rgba(8, 10, 12, 0.85);
-            text-align: center;
-        }
-
-        .lbcontent {
-            background: #282d3c;
-            text-align:left;
-            width: 40%;
-            height: 450px;
-            margin: auto;
-            position: absolute;
-            padding: 15px;
-            border: white 1px solid;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius:20px;
-        }
-        .lbcontent .thirdCol{text-align:center;}
-        .lbcontent img{margin : auto; height : 400px;}
-        .lbcontent p {padding: 7px 0px;}
-        .lbcontent h2 {margin-bottom:20px;}
-        .lbcontent .right{position : relative; float : right; width : 50%; display : inline-block;}
-        .lbcontent .left{position : relative; float : left; width : 50%; display : inline-block;}
-        .loader {
-            border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #ff0035;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 2s linear infinite;
-            margin : 33% auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .share {
-            background: #404451;
-        }
-        .share:hover {
-            background: #747d99;
-        }
-    </style>
 </head>
 <body>
 <?php
@@ -117,8 +32,8 @@
     </header>
     <main id="explore">
         <h1>Explore our catalog...</h1>
-        <h4>Lorem ipsum dolor sit amet, consectetur adip scingelit.
-            Etiam sed dignissim odio.</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
+            Etiam sed dignissim odio.</p>
         <div class="exploreCarousel">
             <?php
                 $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
@@ -155,8 +70,6 @@
         <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
     </div>
     <script>
-        $(document).ready(function () {
-
             $('.exploreCarousel').slick({
                 dots: true,
                 infinite: true,
@@ -194,7 +107,6 @@
                     // instead of a settings object
                 ]
             });
-        });
     </script>
 </footer>
 </body>

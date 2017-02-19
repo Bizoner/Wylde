@@ -1,24 +1,21 @@
 $(document).ready(function(){
 	if (sessionStorage.getItem("email")==null)
-		document.getElementsByTagName("header")[0].innerHTML += '<div id="mySidenav" class="sidenav">' + 
+		document.getElementsByTagName("header")[0].innerHTML += '<nav id="mySidenav" class="sidenav">' +
 	            '<a href="javascript:void(0)" class="closebtn">&times;</a>' +
-	            '<a href="#">About</a>' +
-	            '<a href="#">Services</a>' +
-	            '<a href="#">Clients</a>' +
-	            '<a href="#">Contact</a>' +
-	        '</div>' +
+	            '<a href="index.html">Home</a>' +
+	            '<a href="analysis.php">Build a Guitar</a>' +
+	            '<a href="explore.php">Explore</a>' +
+	        '</nav>' +
 	        '<a href="#" id="menuicon"></a>';
 	else{
-		document.getElementsByTagName("header")[0].innerHTML += '<div id="mySidenav" class="sidenav">' +
+		document.getElementsByTagName("header")[0].innerHTML += '<nav id="mySidenav" class="sidenav">' +
             '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>' +
             '<a href="index.html">Home</a>' +
-            '<a href="wizard.html">Build a Guitar</a>' +
+            '<a href="analysis.php">Build a Guitar</a>' +
             '<a href="explore.php">Explore</a>' +
             '<a href="myguitars.php">My Guitars</a>' +
-            '<a href="#">Contact Us</a>' +
-            '<a href="#">My Profile</a>' +
             '<a id="logout" href="index.html">Logout</a>' +
-	        '</div>' +
+	        '</nav>' +
 	        '<a href="#" id="menuicon" onclick="openNav()"></a>';
 	        document.getElementById("logout").addEventListener('click', clearStorage, false);
 	}

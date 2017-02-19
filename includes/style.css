@@ -19,9 +19,6 @@ h3 {
     font-weight:500;
 }
 
-p {
-    text-align:justify;
-}
 
 button {
     margin-top: 15px;
@@ -119,6 +116,10 @@ main {
     display: none;
 }
 
+#wizard .slick-slide {
+    padding-top:40px;
+}
+
 #wizard section {
     display:block;
 }
@@ -187,7 +188,7 @@ main {
 
 #wizard .slick-slide[data-slick-index="0"] {
     background: url("../images/recomend.png");
-    background-position:top right;
+    background-position:top left;
     background-repeat: no-repeat;
     background-size:43px;
 
@@ -248,10 +249,14 @@ main {
 }
 
 #google {
-    margin-top:15px;
-    background-image:url(../images/google.jpg);
-    height:47px;
-    width : 285px;
+    margin-top: 15px;
+    background-image: url(../images/googleicon.png);
+    height: 47px;
+    width: 285px;
+    background-repeat: no-repeat;
+    background-size: 38px;
+    background-position: 15px;
+    padding-left: 70px;
 }
 
 #headright {
@@ -313,11 +318,11 @@ main {
     margin-top: 20px;
     border-radius: 20px;
     border: 1px white solid;
-    background: url(../images/jazz.png);
+    background-image: url(../images/jazz.png);
     background-color: rgba(255, 255, 255, 0.1);
-    background-size: 80%;
-    background-position: 50%;
-    background-repeat: no-repeat;
+    background-size: 80% !important;
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
 }
 
 #success {
@@ -377,7 +382,8 @@ main {
     width:39px;
     height:31px;
     background-image:url("../images/thumb.jpg");
-    background-size:cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     float:left;
 }
 
@@ -411,7 +417,7 @@ main {
 }
 
 .desc {
-    margin:0 auto;
+    margin:40px auto 0px;
     width:80%;
  text-align:center;
 }
@@ -459,6 +465,9 @@ main {
     margin-left: 50px;
 }
 
+.guitarName {
+    font:inherit;
+}
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 #build_icon {
@@ -611,28 +620,32 @@ main {
 }
 
 .overlay {
-    display:none;
-    background-color : #D3D3D3;
-    position:fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.68);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
     text-align: center;
-    width:100%;
-    height:100%;
-    z-index:1;
-    margin : auto auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    margin: auto auto;
 }
 
 .popup {
     text-align: center;
-    display:none;
-    position:fixed;
-    background:rgba(0,0,0,0.9);
-    top:10%;
-    width:600px;
-    height:420px;
-    left : 30%;
-    top : 20%;  
-    z-index:10;
-    border:2px solid #000;
+    display: none;
+    position: fixed;
+    background: rgb(60, 70, 83);
+    top: 10%;
+    width: 40%;
+    height: 200px;
+    top: 30%;
+    left: 30%;
+    z-index: 10;
+    border-radius: 10px;
+    border: 2px solid #f4364c;
 }
 
 .popup label{
@@ -641,11 +654,22 @@ main {
     font-size : 18px;
 }
 
+.slick-slide h2 {
+    display:none;
+}
+
+.slick-slider {
+    margin-top:50px;
+}
+
 .closePopup {
-    float:right;
-    font-weight:bold;
-    color:red;
-    cursor:pointer;
+    float: right;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+    right: 5px;
+    top: 5px;
+    position: relative;
 }
 
 img {
@@ -658,20 +682,135 @@ img {
 .backmobile {display: none;}
 #finishmobile {display: none;}
 
+#share > .twothirdCol {
+    background: rgba(255, 255, 255, 0.11);
+    border-radius: 20px;
+    border: white solid 1px;
+}
+
+#share .thirdCol img{
+    height:400px;
+}
+#share .twothirdCol .thirdCol {
+    text-align: center;
+}
+
+/*Taken from explore*/
+
+.hidden{display: none;}
+#explore {margin-top:3%;}
+.dot {
+    float: left;
+    width: 10px;
+    height: 10px;
+    background: green;
+    border-radius: 20px;
+    margin: 4px 6px 0px 0px;
+    border: white solid 1px;}
+#explore article {width: 80%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 15px;}
+.exploreCarousel{margin-top:20px; width:90%;}
+.exploreCarousel h3, .exploreCarousel p {margin-bottom:0; padding:10px; text-align:center;}
+#explore .slick-dots {bottom:-50px;}
+#lightbox {
+    display:none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: rgba(8, 10, 12, 0.85);
+    text-align: center;
+}
+
+.lbcontent {
+    background: #282d3c;
+    text-align:left;
+    width: 50%;
+    height: 450px;
+    margin: auto;
+    position: absolute;
+    padding: 15px;
+    border: white 1px solid;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius:20px;
+}
+.lbcontent .thirdCol{text-align:center;}
+.lbcontent img{margin : auto; height : 400px;}
+.lbcontent p {padding: 7px 0px;}
+.lbcontent h2 {margin-bottom:20px;}
+.lbcontent .right{position : relative; float : right; width : 50%; display : inline-block;}
+.lbcontent .left{position : relative; float : left; width : 50%; display : inline-block;}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #ff0035;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin : 33% auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#explore .share {
+    background: #404451;
+}
+#explore .share:hover {
+    background: #747d99;
+}
+.slick-slider{margin: 10px auto;}
+
+#myguitars {margin-top:3%;}
+.exploreCarousel img {height:350px;}
+.status {float:left;}
+#myguitars > .thirdCol {margin-top:15%;}
+
+
+.plusIcon {float: right;
+    text-align: center;
+    color: #2c3241;
+    font-size: 20px;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.33);
+    /* height: 20px; */
+    width: 23px;
+    border-radius: 100%;
+}
+.guitar_top{height:30px; padding:10px;}
+
+#myguitars article article {width: 80%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 15px;}
+
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-width: 450px) {
     /* MAIN*/
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
     .container {width:100%; padding:0;}
     #main .twothirdCol p {display:none;}
     #main {width:85%; text-align:center; margin-top:0;}
     #loginbox {margin:0; width:90%;}
     #headright {right:25px;}
     #menuicon {left:35px;}
-    footer {position:relative; height:0px;}
+    footer {position:relative; height:0px; text-align:center;}
     footer a {display:none;}
-
+    footer .container {height:0px;}
+    footer .container :nth-child(2) {float:inherit;}
+    #logo {height: 85px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;}
     /*analysis*/
 
     #analysis h1, #choose h1, #success h1 {font-size:25px;}
@@ -702,11 +841,34 @@ img {
         font-size: 14px;}
     #wizard .twothirdCol {width:95%;}
     #wizard .desc {display:none;}
+    .popup {width:80%; left:6%;}
+    .popup button {margin-top:0px;}
+    .guitarName {margin-top:20px;}
 
     /*success*/
 
     #success #guitar_pic {width:80%; height:100px;}
     #success button {width:100%;}
+
+    /*explore*/
+    .lbcontent {width:70%;}
+    .lbcontent .thirdCol img {display: none;}
+    .lbcontent #builder {width:95%;}
+    .lbcontent .closePopup {    top: -440px;  }
+    #myguitars .thirdCol {    margin-top: 0;
+        width: 80%;
+        text-align: center;
+        margin-left: 30px;}
+    #myguitars > .twothirdCol {width: 90%;}
+    #explore {text-align:center;}
+    #explore .slick-slider, #myguitars .slick-slider{margin: 10px auto;}
+    #explore .share {display:none;}
+    #share .twothirdCol .thirdCol {display:none; }
+    #share .twothirdCol {    width: 80%;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    #share .thirdCol {text-align:center; width:80%;margin-left: 20px;}
 }
 
 @media screen and (max-width: 768px) { /*not supported yet*/
@@ -715,3 +877,4 @@ img {
     .thirdCol {width:100%;}
 
 }
+

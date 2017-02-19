@@ -85,7 +85,8 @@
         echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->bridge . '</div><div class="item_price"></div></div>';
         echo '<p>CREATED BY: ' . $row->creator . '</p>';
         echo '<p>PRICE: ' . $row->price . '$</p>';
-        echo '<button class="share">SHARE</button>&nbsp;&nbsp;&nbsp;<button class="order">ORDER</Button>';
+        echo '<a href="mailto:someone@toshare.com&subject=Wylde - Check out my guitar&body=Hey i just shared this guitar with you, click on the link: http://shenkar.html5-book.co.il/2016-2017/html5/dev_208/share.php?guitarName='.$row ->guitarName.'&creator='.$row->creator.'">';
+        echo '<button class="share">SHARE</button></a>&nbsp;&nbsp;&nbsp;<button class="order">ORDER</Button>';
 		echo '</div>';
         echo '<div class="thirdCol">';
         echo '<span class="closePopup">X</span>';

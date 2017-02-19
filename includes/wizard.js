@@ -249,7 +249,7 @@ $("#wizard").on("click",".next", function () {
         }
         case 4:{
             bridge = $(".slick-current h2").text();
-            $("#guitar_pic").css("background","url(images/guitar_"+final+")");
+            $("#guitar_pic").css("background-image","url(images/guitar_"+final+")");
             break;
         }
     }
