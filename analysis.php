@@ -10,31 +10,30 @@
 </head>
 <body>
 <?php
-    include('includes/dbConnection.php');
-    if (isset($_POST['email'])){
-        $firstName = "Mr.";
-        $lastName = "Jones";
-        $img = "images/profile.png";
-        $email = $_POST['email'];
-        if ($email=="")
-            $email = "yossit@gmail.com";
-        $password = $_POST['password'];
-        $query = "INSERT INTO tbl_users_208 VALUES ('$firstName','$lastName','$email', '$password', null,null,null,null,null,'$img')";
-        mysqli_query ($connection, $query);
-    }
+include('includes/dbConnection.php');
+if (isset($_POST['email'])) {
+    $firstName = "Mr.";
+    $lastName = "Jones";
+    $img = "images/profile.png";
+    $email = $_POST['email'];
+    if ($email == "")
+        $email = "yossit@gmail.com";
+    $password = $_POST['password'];
+    $query = "INSERT INTO tbl_users_208 VALUES ('$firstName','$lastName','$email', '$password', null,null,null,null,null,'$img')";
+    mysqli_query($connection, $query);
+}
 ?>
 <div class="container">
     <header>
         <?php
-            if(isset($_POST['email'])){
-                echo '<section id="headright">
-                    <a href="#" id="profileName">' . $firstName . " " . $lastName , '</a>
+        if (isset($_POST['email'])) {
+            echo '<section id="headright">
+                    <a href="#" id="profileName">' . $firstName . " " . $lastName, '</a>
                     <p id=hidden>' . $email . '</p>
                     <a href="#" id="profilePic"><img src="images/profile.png"></a>
                 </section>';
-            }
-            else
-                echo '<section id="headright">
+        } else
+            echo '<section id="headright">
                     <a href="#" id="profileName">Yossi Tsaraf</a>
                     <p id=hidden>yossit@gmail.com</p>
                     <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
@@ -52,7 +51,9 @@
         </article>
         <article id="artists">
         </article>
-        <a href="choose.html"><button>LETS START CREATING</button></a>
+        <a href="choose.html">
+            <button>LETS START CREATING</button>
+        </a>
     </main>
 
 </div>
@@ -64,9 +65,10 @@
         <script src="includes/analysis.js"></script>
     </div>
 </footer>
-<script>sessionStorage.setItem("email", document.getElementById("hidden").innerHTML);console.log(sessionStorage.getItem("email"));</script>
+<script>sessionStorage.setItem("email", document.getElementById("hidden").innerHTML);
+    console.log(sessionStorage.getItem("email"));</script>
 </body>
 <?php
-    mysqli_close($connection);
+mysqli_close($connection);
 ?>
 </html>

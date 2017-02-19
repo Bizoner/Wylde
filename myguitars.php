@@ -14,12 +14,12 @@
 </head>
 <body>
 <?php
-    include('includes/dbConnection.php');
-    if (isset($_POST['topGenre']))
-        $topGenre = $_POST['topGenre'];
-    else
-        $topGenre = 'Metal';
-    $email = "yossit@gmail.com";
+include('includes/dbConnection.php');
+if (isset($_POST['topGenre']))
+    $topGenre = $_POST['topGenre'];
+else
+    $topGenre = 'Metal';
+$email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -49,9 +49,9 @@
         <article class="twothirdCol">
             <div class="exploreCarousel">
                 <?php
-                $query = "SELECT DISTINCT tbl_guitars_208.guitarName, tbl_userOrders_208.guitarName,creator,created,img,tbl_userOrders_208.price,tbl_userOrders_208.status from tbl_guitars_208 JOIN tbl_userOrders_208 WHERE creator = '$email' AND tbl_userOrders_208.guitarName=tbl_guitars_208.guitarName ORDER BY created DESC"; 
+                $query = "SELECT DISTINCT tbl_guitars_208.guitarName, tbl_userOrders_208.guitarName,creator,created,img,tbl_userOrders_208.price,tbl_userOrders_208.status from tbl_guitars_208 JOIN tbl_userOrders_208 WHERE creator = '$email' AND tbl_userOrders_208.guitarName=tbl_guitars_208.guitarName ORDER BY created DESC";
                 $result = mysqli_query($connection, $query);
-                while ($row = $result->fetch_object()){
+                while ($row = $result->fetch_object()) {
                     echo '<div>
                          <article>
                         <section class="guitar_top">
@@ -130,7 +130,7 @@
 </footer>
 </body>
 <?php
-if ($result!=null)
+if ($result != null)
     mysqli_free_result($result);
 mysqli_close($connection);
 ?>

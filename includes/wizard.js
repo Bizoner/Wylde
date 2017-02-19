@@ -10,7 +10,7 @@ var animating; //flag to prevent quick multi-click glitches
 var iterator = 0;
 var step = 0;
 var private = 1;
-var name, Duration, email, bridge,neck,body,pickup,recommended, final;
+var name, Duration, email, bridge, neck, body, pickup, recommended, final;
 var lucky = false;
 var price = 0;
 // TODO CAROUSEL LOGIC:
@@ -24,8 +24,8 @@ var price = 0;
 var bestStyle = "Metal";
 var email = "yossit@gmail.com";
 
-function calculate(){
-    price+=parseFloat($(".item_price").eq(step-1).text());
+function calculate() {
+    price += parseFloat($(".item_price").eq(step - 1).text());
 }
 
 function moveSelectedFirst(array) {
@@ -43,7 +43,7 @@ function moveSelectedFirst(array) {
     return array;
 };
 
-function deleteCarousel(classname){
+function deleteCarousel(classname) {
     document.getElementsByClassName(classname)[0].remove();
 }
 
@@ -74,33 +74,33 @@ function createCarousel(classname) {
             }
         ]
     });
-    $(".slick-next").click(function (){   
+    $(".slick-next").click(function () {
         $(".desc h2").eq(step).text($(".slick-current h2").text());
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
         $(".item_price").eq(step).text($(".slick-current article").text() + "$");
-        $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
+        $(".item_thumb").eq(step).css("background-image", "url(" + ($(".slick-current img").attr("src")) + ")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
-        else 
+        else
             $(".desc h5").css("display", "none");
     });
-    $(".slick-prev").click(function (){
+    $(".slick-prev").click(function () {
         $(".desc h2").eq(step).text($(".slick-current h2").text());
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
         $(".item_price").eq(step).text($(".slick-current article").text() + "$");
-        $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
+        $(".item_thumb").eq(step).css("background-image", "url(" + ($(".slick-current img").attr("src")) + ")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
-        else 
+        else
             $(".desc h5").css("display", "none");
     });
     $(".desc h2").eq(step).text($(".slick-current h2").text());
     $(".desc p").eq(step).text($(".slick-current p").text());
     $(".item_title").eq(step).text($(".slick-current h2").text());
     $(".item_price").eq(step).text($(".slick-current article").text() + "$");
-    $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
+    $(".item_thumb").eq(step).css("background-image", "url(" + ($(".slick-current img").attr("src")) + ")");
     recommended = $(".slick-current h2").text();
 };
 
@@ -110,13 +110,13 @@ $(document).ready(function () {
     $(".desc p").text($(".slick-current p").text());
     $(".item_title").text($(".slick-current h2").text());
     $(".item_price").text($(".slick-current article").text() + "$");
-    if (sessionStorage.getItem("lucky")=='true'){
+    if (sessionStorage.getItem("lucky") == 'true') {
         sessionStorage.setItem("lucky", false);
         buttons = document.getElementsByClassName('next');
-        lucky=true;
-        var i=0;
-        var looper = setInterval(function(){
-            if (i<4){
+        lucky = true;
+        var i = 0;
+        var looper = setInterval(function () {
+            if (i < 4) {
                 buttons[i].click();
                 i++;
             }
@@ -125,40 +125,48 @@ $(document).ready(function () {
         }, 0);
     }
     else {
-        $(".backmobile").css("display","none!important");
-        $("#finishmobile").css("display","none!important");
+        $(".backmobile").css("display", "none!important");
+        $("#finishmobile").css("display", "none!important");
     }
 
 });
 
-$("#wizard").on("click", ".finish", function(){
+$("#wizard").on("click", ".finish", function () {
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('popup').style.display = 'block';
 });
 
-$("#wizard").on("click", ".edit", function(){
+$("#wizard").on("click", ".edit", function () {
     name = $("#sectitle").text();
     creator = $(".thirdCol h6").text();
-    var src = "images/guitar_"+final.substring(0, final.length-4) + "_up.png";
+    var src = "images/guitar_" + final.substring(0, final.length - 4) + "_up.png";
     var today = new Date();
     var link = "images/guitar_" + final;
     sessionStorage.setItem("src", link);
     sessionStorage.setItem("total", price);
     $.ajax({
         url: 'includes/call.php',
-       data: {'editGuitar' : 'editGuitar','name' : name, 'creator' : creator, 'pickup' : pickup, 'neck' : neck,
-              'body' : body, 'bridge' : bridge, 'price' : price, 'img' : src},
-       type: 'post',
-       success: function (response){console.log("Success");console.log(response); window.location = 'successedit.html'},
-       error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}
+        data: {
+            'editGuitar': 'editGuitar', 'name': name, 'creator': creator, 'pickup': pickup, 'neck': neck,
+            'body': body, 'bridge': bridge, 'price': price, 'img': src
+        },
+        type: 'post',
+        success: function (response) {
+            console.log("Success");
+            console.log(response);
+            window.location = 'successedit.html'
+        },
+        error: function (xhr, status, error) {
+            console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);
+        }
     });
 });
 
-$("#wizard").on("click", ".submit", function(){
+$("#wizard").on("click", ".submit", function () {
     name = document.getElementsByClassName("guitarName")[0].value;
-    if (name=="")
+    if (name == "")
         name = "myGuitar";
-    var src = "images/guitar_"+final.substring(0, final.length-4) + "_up.png";
+    var src = "images/guitar_" + final.substring(0, final.length - 4) + "_up.png";
     if (document.getElementsByClassName("public")[0].checked)
         private = 0;
     var today = new Date();
@@ -166,36 +174,44 @@ $("#wizard").on("click", ".submit", function(){
     sessionStorage.setItem("src", link);
     sessionStorage.setItem("total", price);
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth() + 1; //January is 0!
 
     var yyyy = today.getFullYear();
-    if(dd<10){
-        dd='0'+dd;
-    } 
-    if(mm<10){
-        mm='0'+mm;
-    } 
-    var today = dd+'/'+mm+'/'+yyyy;
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    var today = dd + '/' + mm + '/' + yyyy;
     $.ajax({
         url: 'includes/call.php',
-       data: {'insertGuitar' : 'insertGuitar','name' : name, 'email' : email, 'pickup' : pickup, 'neck' : neck,
-              'body' : body, 'bridge' : bridge, 'private' : private, 'price' : price, 'img' : src, 'created' : today},
-       type: 'post',
-       success: function (response){console.log("Success");console.log(sessionStorage.getItem("src")); window.location = 'success.html'},
-       error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}
+        data: {
+            'insertGuitar': 'insertGuitar', 'name': name, 'email': email, 'pickup': pickup, 'neck': neck,
+            'body': body, 'bridge': bridge, 'private': private, 'price': price, 'img': src, 'created': today
+        },
+        type: 'post',
+        success: function (response) {
+            console.log("Success");
+            console.log(sessionStorage.getItem("src"));
+            window.location = 'success.html'
+        },
+        error: function (xhr, status, error) {
+            console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);
+        }
     });
 });
 
-$("#wizard").on("click", ".closePopup", function(){
+$("#wizard").on("click", ".closePopup", function () {
 
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('popup').style.display = 'none';
 });
 
-$("#wizard").on("click",".next", function () {
-    if (lucky){
+$("#wizard").on("click", ".next", function () {
+    if (lucky) {
         Duration = 0;
-        animating=false;
+        animating = false;
     }
     else
         Duration = 800;
@@ -238,35 +254,35 @@ $("#wizard").on("click",".next", function () {
 
     var current_title = $(".desc h2").html();
 
-    if (step<4) {
+    if (step < 4) {
         $("#builder section").append('<div class="item"><div class="item_thumb"></div> <div class="item_title"></div><div class="item_price"></div></div>');
     }
 
 
     switch (step) {
-        case 1:{
+        case 1: {
             pickup = $(".slick-current h2").text();
-            deleteCarousel("carouselA");   
+            deleteCarousel("carouselA");
             createCarousel("carouselB");
             break;
         }
-        case 2:{
+        case 2: {
             body = $(".slick-current h2").text();
             final = $(".slick-current img").attr("src").substring(12);
-            deleteCarousel("carouselB"); 
+            deleteCarousel("carouselB");
             createCarousel("carouselC");
 
             break;
         }
-        case 3:{
+        case 3: {
             neck = $(".slick-current h2").text();
-            deleteCarousel("carouselC"); 
+            deleteCarousel("carouselC");
             createCarousel("carouselD");
             break;
         }
-        case 4:{
+        case 4: {
             bridge = $(".slick-current h2").text();
-            $("#guitar_pic").css("background-image","url(images/guitar_"+final+")");
+            $("#guitar_pic").css("background-image", "url(images/guitar_" + final + ")");
             break;
         }
     }

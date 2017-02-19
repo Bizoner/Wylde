@@ -15,12 +15,12 @@
 </head>
 <body>
 <?php
-    include('includes/dbConnection.php');
-    if (isset($_POST['topGenre']))
-        $topGenre = $_POST['topGenre'];
-    else
-        $topGenre = 'Metal';
-    $email = "yossit@gmail.com";
+include('includes/dbConnection.php');
+if (isset($_POST['topGenre']))
+    $topGenre = $_POST['topGenre'];
+else
+    $topGenre = 'Metal';
+$email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -36,22 +36,22 @@
             Etiam sed dignissim odio.</p>
         <div class="exploreCarousel">
             <?php
-                $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
-                $result = mysqli_query($connection, $query);
-                while ($row = $result->fetch_object()){
-                    echo '<div>
+            $query = "SELECT * from tbl_guitars_208 where creator = '$email' OR private=0 order by creator='$email' DESC";
+            $result = mysqli_query($connection, $query);
+            while ($row = $result->fetch_object()) {
+                echo '<div>
                          <article>
                     <section class="guitar_top">
                     <div class="plusIcon">+</div>
                     </section>';
-                    echo '<img src=' . $row->img . '>';
-                    echo '<h3 class="guitarName">' . $row->guitarName . '</h3>';
-                    echo '<h3 class="hidden">' . $row->creator . '</h3>';
-                    echo '<p>' . $row->price . '</p>';
-                    echo '<p>' . $row->created . '</p>';
-                    echo '</article>
+                echo '<img src=' . $row->img . '>';
+                echo '<h3 class="guitarName">' . $row->guitarName . '</h3>';
+                echo '<h3 class="hidden">' . $row->creator . '</h3>';
+                echo '<p>' . $row->price . '</p>';
+                echo '<p>' . $row->created . '</p>';
+                echo '</article>
                           </div>';
-                }
+            }
             ?>
 
         </div>
@@ -70,49 +70,49 @@
         <span>Copyright © 2017 Gady Ezra & Eldad Corem</span>
     </div>
     <script>
-            $('.exploreCarousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 5,
-                slidesToScroll: 1,
-                autoplay: false,
-                autoplaySpeed: 3000,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
+        $('.exploreCarousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 3000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
     </script>
 </footer>
 </body>
 <?php
-    if ($result!=null)
-        mysqli_free_result($result);
-    mysqli_close($connection);
+if ($result != null)
+    mysqli_free_result($result);
+mysqli_close($connection);
 ?>
 </html>
