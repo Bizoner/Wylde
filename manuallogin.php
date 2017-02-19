@@ -14,7 +14,7 @@
     if (isset($_POST['email'])){
         $firstName = "Mrs.";
         $lastName = "Jones";
-        $img = "imgaes/profile.png";
+        $img = "images/profile.png";
         $email = $_POST['email'];
         if ($email=="")
             $email = "yossit@gmail.com";

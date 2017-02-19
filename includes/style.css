@@ -416,6 +416,10 @@ main {
   float:left;
 }
 
+.thirdCol h6{
+    display: none;
+}
+
 .desc {
     margin:40px auto 0px;
     width:80%;

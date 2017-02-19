@@ -16,16 +16,17 @@
         $email = $_POST['email'];
     else
         $email = "yossit@gmail.com";
-    $query = "SELECT firstGenre from tbl_users_208 WHERE email = '$email'";
-    $result = mysqli_query($connection, $query);
-    $row = $result->fetch_object();
-    $topGenre = $row->firstGenre;
     if (isset($_POST['edit'])){
         $pickup = $_POST['pickup'];
         $body = $_POST['body'];
         $neck = $_POST['neck'];
         $bridge = $_POST['bridge'];
+        $email = $_POST['creator'];
     }
+    $query = "SELECT firstGenre from tbl_users_208 WHERE email = '$email'";
+    $result = mysqli_query($connection, $query);
+    $row = $result->fetch_object();
+    $topGenre = $row->firstGenre;
 ?>
 <div class="container">
     <header>
@@ -77,7 +78,7 @@
                         if (isset($_POST['lucky']))
                             $query = "SELECT * from tbl_guitarParts_208 where type = 2 AND topGenre='$topGenre'";
                         else if (isset($_POST['edit'])){
-                            $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by name='$body' DESC";
+                            $query = "SELECT * from tbl_guitarParts_208 where type = 2 order by name='$body' DESC";
                         }
                         else
                             $query = "SELECT * from tbl_guitarParts_208 where type = 2 order by topGenre='$topGenre' DESC";
@@ -108,7 +109,7 @@
                         if (isset($_POST['lucky']))
                             $query = "SELECT * from tbl_guitarParts_208 where type = 3 AND topGenre='$topGenre'";
                         else if (isset($_POST['edit'])){
-                            $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by name='$neck' DESC";
+                            $query = "SELECT * from tbl_guitarParts_208 where type = 3 order by name='$neck' DESC";
                         }
                         else
                             $query = "SELECT * from tbl_guitarParts_208 where type = 3 order by topGenre='$topGenre' DESC";
@@ -139,7 +140,7 @@
                         if (isset($_POST['lucky']))
                             $query = "SELECT * from tbl_guitarParts_208 where type = 4 AND topGenre='$topGenre'";
                         else if (isset($_POST['edit'])){
-                            $query = "SELECT * from tbl_guitarParts_208 where type = 1 order by name='$bridge' DESC";
+                            $query = "SELECT * from tbl_guitarParts_208 where type = 4 order by name='$bridge' DESC";
                         }
                         else
                             $query = "SELECT * from tbl_guitarParts_208 where type = 4 order by topGenre='$topGenre' DESC";
@@ -162,15 +163,29 @@
                 </div>
             </section>
             <section>
-                <h1>NOW THATS <span id="sectitle">YOUR</span> GUITAR!</h1>
-                <h3>Looks Awesome!<br>
-                    But you can review it, and change parts if necessary by the creation menu</h3>
+                <?php 
+                    if (isset($_POST['edit']))
+                        echo '<h1>NOW THATS <span id="sectitle">' . $_POST["guitarName"] . '</span></h1>
+                            <h3>Looks Awesome!</h3>';
+                    else
+                        echo '<h1>NOW THATS <span id="sectitle">YOUR</span> GUITAR!</h1>
+                            <h3>Looks Awesome!<br>
+                            But you can review it, and change parts if necessary by the creation menu</h3>';
+                ?>
                 <section id="guitar_pic">
                 </section>
-                <div class="desc">
-                <button class="finish">FINISH GUITAR!</button>
-                    <h5>*Picture for demonstration only</h5>
-                </div>
+                <?php
+                    if (isset($_POST['edit']))
+                        echo '<div class="desc">
+                        <button class="edit">Submit your changes!</button>
+                            <h5>*Picture for demonstration only</h5>
+                        </div>';
+                    else
+                        echo '<div class="desc">
+                        <button class="finish">FINISH GUITAR!</button>
+                            <h5>*Picture for demonstration only</h5>
+                        </div>';
+                ?>
                 <div id="overlay" class="overlay"></div>
             </section>
 
@@ -182,6 +197,10 @@
                 <li>Neck</li>
                 <li>Bridge</li>
                 <li>FINISH</li>
+                <?php
+                    if (isset($_POST['edit']))
+                        echo '<h6>' . $_POST['creator'] . '</h6>';
+                ?>
             </ul>
             <section>
                 <h3>Your Guitar:</h3>

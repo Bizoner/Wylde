@@ -78,7 +78,7 @@ function createCarousel(classname) {
         $(".desc h2").eq(step).text($(".slick-current h2").text());
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
-        $(".item_price").eq(step).text($(".slick-current article").text());
+        $(".item_price").eq(step).text($(".slick-current article").text() + "$");
         $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
@@ -89,7 +89,7 @@ function createCarousel(classname) {
         $(".desc h2").eq(step).text($(".slick-current h2").text());
         $(".desc p").eq(step).text($(".slick-current p").text());
         $(".item_title").eq(step).text($(".slick-current h2").text());
-        $(".item_price").eq(step).text($(".slick-current article").text());
+        $(".item_price").eq(step).text($(".slick-current article").text() + "$");
         $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
         if ($(".slick-current h2").text() == recommended)
             $(".desc h5").css("display", "block");
@@ -99,7 +99,7 @@ function createCarousel(classname) {
     $(".desc h2").eq(step).text($(".slick-current h2").text());
     $(".desc p").eq(step).text($(".slick-current p").text());
     $(".item_title").eq(step).text($(".slick-current h2").text());
-    $(".item_price").eq(step).text($(".slick-current article").text());
+    $(".item_price").eq(step).text($(".slick-current article").text() + "$");
     $(".item_thumb").eq(step).css("background-image","url("+($(".slick-current img").attr("src"))+")");
     recommended = $(".slick-current h2").text();
 };
@@ -109,7 +109,7 @@ $(document).ready(function () {
     $(".desc h2").text($(".slick-current h2").text());
     $(".desc p").text($(".slick-current p").text());
     $(".item_title").text($(".slick-current h2").text());
-    $(".item_price").text($(".slick-current article").text());
+    $(".item_price").text($(".slick-current article").text() + "$");
     if (sessionStorage.getItem("lucky")=='true'){
         sessionStorage.setItem("lucky", false);
         buttons = document.getElementsByClassName('next');
@@ -136,6 +136,24 @@ $("#wizard").on("click", ".finish", function(){
     document.getElementById('popup').style.display = 'block';
 });
 
+$("#wizard").on("click", ".edit", function(){
+    name = $("#sectitle").text();
+    creator = $(".thirdCol h6").text();
+    var src = "images/guitar_"+final.substring(0, final.length-4) + "_up.png";
+    var today = new Date();
+    var link = "images/guitar_" + final;
+    sessionStorage.setItem("src", link);
+    sessionStorage.setItem("total", price);
+    $.ajax({
+        url: 'includes/call.php',
+       data: {'editGuitar' : 'editGuitar','name' : name, 'creator' : creator, 'pickup' : pickup, 'neck' : neck,
+              'body' : body, 'bridge' : bridge, 'price' : price, 'img' : src},
+       type: 'post',
+       success: function (response){console.log("Success");console.log(response); window.location = 'successedit.html'},
+       error: function(xhr, status, error) {console.log("Failed + " + error + " + " + status + " + " + xhr.responseText);}
+    });
+});
+
 $("#wizard").on("click", ".submit", function(){
     name = document.getElementsByClassName("guitarName")[0].value;
     if (name=="")
@@ -146,6 +164,7 @@ $("#wizard").on("click", ".submit", function(){
     var today = new Date();
     var link = "images/guitar_" + final;
     sessionStorage.setItem("src", link);
+    sessionStorage.setItem("total", price);
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
 
@@ -156,8 +175,6 @@ $("#wizard").on("click", ".submit", function(){
     if(mm<10){
         mm='0'+mm;
     } 
-    
-            console.log(pickup + " " + body + " " + neck + " " + bridge);
     var today = dd+'/'+mm+'/'+yyyy;
     $.ajax({
         url: 'includes/call.php',

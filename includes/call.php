@@ -4,6 +4,22 @@
 	$query = "use auxstudDB6c";
 		mysqli_query ($connection, $query);
 
+	if (isset($_POST['editGuitar'])){
+		$creator = $_POST['creator'];
+		$guitarName = $_POST['name'];
+		$img = $_POST['img'];
+		$pickup = $_POST['pickup'];
+		$neck = $_POST['neck'];
+		$body = $_POST['body'];
+		$bridge = $_POST['bridge'];
+		$query = "UPDATE tbl_guitars_208 SET pickup = '$pickup', body = '$body', neck = '$neck', bridge = '$bridge', img = '$img' WHERE creator = '$creator' AND guitarName = '$guitarName'";
+		if ($result = mysqli_query($connection, $query))
+			echo $pickup . ' ' . $body . ' ' . $neck . ' ' . $bridge . ' ' . $guitarName . ' ' . $creator . ' ' . $img;
+		else
+			echo 'not edited';
+		mysqli_close($connection);
+	}
+
 	if(isset($_POST['buildGuitar'])){
 		$query = "SELECT * from tbl_guitarParts_208 order by type ASC";
 		$result = mysqli_query($connection, $query);

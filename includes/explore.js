@@ -14,7 +14,6 @@ $(document).ready(function () {
         document.getElementsByTagName("a")[0].addEventListener('click', orderGuitar, false);
     }
     catch(err){}
-    document.getElementsByClassName("submit")[0].addEventListener('click', function(){window.location="choose.html"}, false);
 });
 
 function edit(){
@@ -49,6 +48,16 @@ function edit(){
     input.type = 'hidden';
     input.name = 'bridge';
     input.value = bridge;
+    theForm.appendChild(input);
+    input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'guitarName';
+    input.value = $(".user span").text();
+    theForm.appendChild(input);
+    input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'creator';
+    input.value = $(".thirdCol h6").text();
     theForm.appendChild(input);
     document.getElementById('share').appendChild(theForm);
     theForm.submit();

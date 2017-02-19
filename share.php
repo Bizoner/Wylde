@@ -25,18 +25,19 @@
     <header>
         <section id="headright">
             <a href="#" id="profileName">Shlomi Ezra</a>
-            <a href="#" id="profilePic"></a>
+            <a href="#" id="profilePic"><img src="images/users/yossit.png"></a>
         </section>
         <a href="index.html" id="logo"></a>
     </header>
     <main id="share">
         <?php
             echo '<article class="thirdCol">
-                <h1>YOSSI HAS SHARED "' . $_GET['guitarName'] . '"</h1>
+                <h1 class="user">YOSSI HAS SHARED "<span>' . $_GET['guitarName'] . '</span>"</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</p>
                 <button class="edit">EDIT</button>&nbsp;&nbsp;&nbsp;<a href="mailto:'.$_GET['creator'].'@toshare.com&subject=Wylde - ITS ALL GOOD!&body=Hey i just reviewd your guitar and its all good!">
                 <button class="reply">HI-FIVE!</Button></a>
+                <h6>' . $email . '</h6>
             </article>';
         ?>
         <article class="twothirdCol">
