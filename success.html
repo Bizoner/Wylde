@@ -28,7 +28,7 @@
                 <section id="guitar_pic">
                 </section>
                 <div class="desc">
-                    <h3>TOTAL: $1752</h3>
+                    <h3></h3>
                     <a href="myguitars.php"><button>ORDER NOW</button></a>
                     <a href="myguitars.php"><button id="second_button">YOUR GUITARS</button></a>
                 </div>
@@ -39,7 +39,7 @@
 </div>
 <script>
     $("#guitar_pic").css("background","url("+sessionStorage.getItem("src")+")");
-        console.log(sessionStorage.getItem("src"));</script>
+    $(".desc h3").text("TOTAL: " + sessionStorage.getItem("total"));</script>
 <footer>
     <div class="container">
         <a href="#"><span>CONTACT US</span></a>
