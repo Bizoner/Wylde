@@ -14,12 +14,12 @@
 </head>
 <body>
 <?php
-    include('includes/dbConnection.php');
-    if (isset($_POST['topGenre']))
-        $topGenre = $_POST['topGenre'];
-    else
-        $topGenre = 'Metal';
-    $email = "yossit@gmail.com";
+include('includes/dbConnection.php');
+if (isset($_POST['topGenre']))
+    $topGenre = $_POST['topGenre'];
+else
+    $topGenre = 'Metal';
+$email = "yossit@gmail.com";
 ?>
 <div class="container">
     <header>
@@ -31,39 +31,39 @@
     </header>
     <main id="share">
         <?php
-            echo '<article class="thirdCol">
+        echo '<article class="thirdCol">
                 <h1 class="user">YOSSI HAS SHARED "<span>' . $_GET['guitarName'] . '</span>"</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adip scingelit.
                     Etiam sed dignissim odio.</p>
-                <button class="edit">EDIT</button>&nbsp;&nbsp;&nbsp;<a href="mailto:'.$_GET['creator'].'@toshare.com&subject=Wylde - ITS ALL GOOD!&body=Hey i just reviewd your guitar and its all good!">
+                <button class="edit">EDIT</button>&nbsp;&nbsp;&nbsp;<a href="mailto:' . $_GET['creator'] . '@toshare.com&subject=Wylde - ITS ALL GOOD!&body=Hey i just reviewd your guitar and its all good!">
                 <button class="reply">HI-FIVE!</Button></a>
                 <h6>' . $email . '</h6>
             </article>';
         ?>
         <article class="twothirdCol">
-                    <?php
-                    $name = $_GET['guitarName'];
-                    $creator = $_GET['creator'];
-                    $query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
-                    $result = mysqli_query($connection, $query);
-                    $row = $result->fetch_object();
-                    echo '<div class="twothirdCol" id="builder">';
-                    echo '<h2>' . $row ->guitarName . '</h2><br>';
-                    echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->pickup . '</div><div class="item_price"></div></div>';
-                    echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->body . '</div><div class="item_price"></div></div>';
-                    echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->neck . '</div><div class="item_price"></div></div>';
-                    echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->bridge . '</div><div class="item_price"></div></div>';
-                    echo '<br><p>CREATED BY: ' . $row->creator . '</p>';
-                    echo '<p>PRICE: ' . $row->price . '$</p>';
-                    echo '</div>';
-                    echo '<div class="thirdCol">';
-                    echo '<img src=' . $row->img .'>';
-                    echo '</div>';
-                    ?>
+            <?php
+            $name = $_GET['guitarName'];
+            $creator = $_GET['creator'];
+            $query = "SELECT * FROM tbl_guitars_208 WHERE creator = '$creator' AND guitarName = '$name'";
+            $result = mysqli_query($connection, $query);
+            $row = $result->fetch_object();
+            echo '<div class="twothirdCol" id="builder">';
+            echo '<h2>' . $row->guitarName . '</h2><br>';
+            echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->pickup . '</div><div class="item_price"></div></div>';
+            echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->body . '</div><div class="item_price"></div></div>';
+            echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->neck . '</div><div class="item_price"></div></div>';
+            echo '<div class="item"><div class="item_thumb"></div><div class="item_title">' . $row->bridge . '</div><div class="item_price"></div></div>';
+            echo '<br><p>CREATED BY: ' . $row->creator . '</p>';
+            echo '<p>PRICE: ' . $row->price . '$</p>';
+            echo '</div>';
+            echo '<div class="thirdCol">';
+            echo '<img src=' . $row->img . '>';
+            echo '</div>';
+            ?>
 
-            </div>
-        </article>
-    </main>
+</div>
+</article>
+</main>
 
 </div>
 <footer>
@@ -117,7 +117,7 @@
 </footer>
 </body>
 <?php
-if ($result!=null)
+if ($result != null)
     mysqli_free_result($result);
 mysqli_close($connection);
 ?>

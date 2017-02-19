@@ -29,8 +29,12 @@
                 </section>
                 <div class="desc">
                     <h3></h3>
-                    <a href="explore.php"><button>EXPLORE</button></a>
-                    <a href="mailto: yossit@toshare.com&subject=Wylde - YOUR GUITAR IS BETTER!&body=Hey i just updated your guitar specs! check it out!"><button id="second_button">NOTIFY USER</button></a>
+                    <a href="explore.php">
+                        <button>EXPLORE</button>
+                    </a>
+                    <a href="mailto: yossit@toshare.com&subject=Wylde - YOUR GUITAR IS BETTER!&body=Hey i just updated your guitar specs! check it out!">
+                        <button id="second_button">NOTIFY USER</button>
+                    </a>
                 </div>
             </section>
 
@@ -38,7 +42,7 @@
     </main>
 </div>
 <script>
-    $("#guitar_pic").css("background","url("+sessionStorage.getItem("src")+")");
+    $("#guitar_pic").css("background", "url(" + sessionStorage.getItem("src") + ")");
     $(".desc h3").text("TOTAL: " + sessionStorage.getItem("total"));
 </script>
 <footer>
